@@ -1,0 +1,5 @@
+mixedlm MI ~ subtype         A1-A3 +0.00524  p = 2.3e-72
+mixedlm MI ~ subtype + dur   A1-A3 +0.00137  p = 1.7e-05
+mixedlm MI ~ subtype + inv   A1-A3 +0.00085  p = 0.0033
+mixedlm MI ~ subtype + logd  A1-A3 +0.00017  p = 0.57
+subject-level, MI residualised on 1/duration within subject: A1-A3 +0.00060  t15 = 1.49  p = 0.16

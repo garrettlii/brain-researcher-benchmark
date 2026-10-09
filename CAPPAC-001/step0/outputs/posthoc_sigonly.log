@@ -1,0 +1,4 @@
+Fig. 3a (read off the bars): A1 ~0.0118, A2 ~0.0100, A3 ~0.0065
+all included segments, subject means: {'A1': 0.0122, 'A2': 0.0096, 'A3': 0.0072}
+surrogate-significant segments only, subject means: {'A1': 0.0218, 'A2': 0.0178, 'A3': 0.0147} | n segments {'A1': 313, 'A2': 92, 'A3': 84}
+pooled segment means (Fig. 3a bars are segment means +- SEM): all {'A1': 0.0126, 'A2': 0.0096, 'A3': 0.0068} significant only {'A1': 0.0225, 'A2': 0.0187, 'A3': 0.013}

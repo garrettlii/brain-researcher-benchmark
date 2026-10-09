@@ -412,9 +412,37 @@
     "sha256": "127069901a02593167d42a8a1a1cde301fb07a9ee024e284662364563d26d557",
     "media_type": "application/json",
     "visibility": "author_private"
+   },
+   {
+    "artifact_id": "CAPPAC-001:step0_posthoc_covariate.py",
+    "uri": "step0/posthoc_covariate.py",
+    "sha256": "b34f91aabe34f305d4ecfd6172ad69ac5fc50513b6a25fddd536440661ca7aaf",
+    "media_type": "text/x-python",
+    "visibility": "author_private"
+   },
+   {
+    "artifact_id": "CAPPAC-001:step0_outputs_posthoc_covariate.log",
+    "uri": "step0/outputs/posthoc_covariate.log",
+    "sha256": "e62f4024d6b3f7bc72228e93567b8b1ee6ec56f487938b26eae50bff8b189ae9",
+    "media_type": "text/plain",
+    "visibility": "author_private"
+   },
+   {
+    "artifact_id": "CAPPAC-001:step0_posthoc_sigonly.py",
+    "uri": "step0/posthoc_sigonly.py",
+    "sha256": "15e15c3d074460d71e7aa1bcc37541db81e235d5f0df1fdfb1e2f13dc504d445",
+    "media_type": "text/x-python",
+    "visibility": "author_private"
+   },
+   {
+    "artifact_id": "CAPPAC-001:step0_outputs_posthoc_sigonly.log",
+    "uri": "step0/outputs/posthoc_sigonly.log",
+    "sha256": "0f19bf065bfab9e14efd4e16d6a5572931e771f54324d47056936935891d8af0",
+    "media_type": "text/plain",
+    "visibility": "author_private"
    }
   ],
-  "note": "Predeclared exploratory analyses (run.log) plus two post-hoc diagnostics written after run.log; none used for the decision.",
+  "note": "Predeclared exploratory analyses (run.log) plus four post-hoc diagnostics written after run.log; none used for the decision.",
   "value": {
    "crop_windows_A1_A3": {
     "mi_first3": {
@@ -819,9 +847,33 @@
      "mean_a": 5.8e-05,
      "mean_b": -0.00022
     }
+   },
+   "posthoc_duration_covariate_mixedlm_A1_A3": {
+    "none": "+0.00524 p=2.3e-72",
+    "linear": "+0.00137 p=1.7e-05",
+    "inverse": "+0.00085 p=0.0033",
+    "log": "+0.00017 p=0.57",
+    "subject_level_residualised_on_inverse": "+0.00060 t15=1.49 p=0.16"
+   },
+   "posthoc_surrogate_significant_only_subject_means": {
+    "all_segments": {
+     "A1": 0.0122,
+     "A2": 0.0096,
+     "A3": 0.0072
+    },
+    "significant_only": {
+     "A1": 0.0218,
+     "A2": 0.0178,
+     "A3": 0.0147
+    },
+    "fig3a_read": {
+     "A1": 0.0118,
+     "A2": 0.01,
+     "A3": 0.0065
+    }
    }
   },
-  "reading": "Every other crop length (3, 5, 6 s) and the middle 4 s give A1 - A3 within +-0.0008 (all p > .3); 1-s duration bins give +0.0013 [-0.0002, +0.0027]. Surrogate z-scored MI shows no subtype difference (circular shifts p = .09, the paper's block-swap surrogates p = .17), and only 7-8% of segments of any subtype exceed the 95th percentile of their block-swap surrogates. With delta 1-2.5 Hz or the F4-C4 derivation the floor is 94-96% of the raw difference and both controls are null (4-16% of raw, p > .13). The paper's secondary 'light > deep' reading behaves the same way within A1: S2 - S4 raw +0.0035 (p = .0001), cropped -0.0004 (p = .59), debiased -0.0001."
+  "reading": "Every other crop length (3, 5, 6 s) and the middle 4 s give A1 - A3 within +-0.0008 (all p > .3); 1-s duration bins give +0.0013 [-0.0002, +0.0027]. Surrogate z-scored MI shows no subtype difference (circular shifts p = .09, the paper's block-swap surrogates p = .17), and only 7-8% of segments of any subtype exceed the 95th percentile of their block-swap surrogates. With delta 1-2.5 Hz or the F4-C4 derivation the floor is 94-96% of the raw difference and both controls are null (4-16% of raw, p > .13). The paper's secondary 'light > deep' reading behaves the same way within A1: S2 - S4 raw +0.0035 (p = .0001), cropped -0.0004 (p = .59), debiased -0.0001. Adjusting for duration as a covariate (segment-level mixed model) shrinks A1 - A3 by 74% (linear), 84% (1/duration) or 97% (log duration); the linear and inverse fits stay significant only at the segment level (pseudo-replication), and the subject-level residualised contrast is +0.0006 (p = .16). Fig. 3a matches the all-segment means; means over surrogate-significant segments only would be about twice as high (claim_scope_addendum.md)."
  },
  "lever": {
   "name": "data length: the Tort MI of a short segment has a positive finite-sample floor (~1/length), and A1 segments are about half as long as A3, so raw MI ranks subtypes by duration",
@@ -850,7 +902,7 @@
   "answer": "no (judgement beyond routine execution, still necessary for the public question)",
   "rationale": "The pinned method (whole-night filter-Hilbert, per-segment Tort MI, the paper's >2-cycle inclusion rule, subject means, paired subtype contrasts) runs end to end and reproduces A1 > A2 > A3 without ever comparing segment lengths, computing a null floor, or equalising windows; the required outputs are per-subject subtype means and contrasts. Routine enumeration of the other contrasts (A1-A2, A2-A3, stage) repeats the same ordering, because every contrast is confounded with length. The public question (does the MI ordering show a difference in coupling strength?) makes the check necessary: MI is only comparable across conditions at matched data length."
  },
- "agent_headroom_hypothesis": "Agents implement Tort MI as pinned, get the paper's numbers almost exactly with a very large effect (d_z 2.5, p = 4e-8), and confirm that A1 shows the strongest coupling, adding generic PAC caveats (volume conduction, non-sinusoidal waveforms, spectral power, small n). Seeing that the subtypes differ two-fold in length and that the estimator's floor scales with length requires interrogating the measure against the annotation, not running more contrasts. Risks: PAC-literate agents may z-score against surrogates as a habit (that route also shows no subtype difference, and is accepted if they link it to the ordering); the paper's own Methods mention the duration rationale for the >2-cycle rule, which an agent reading the paper may follow up. Stage 5 decides.",
+ "agent_headroom_hypothesis": "Agents implement Tort MI as pinned, get the paper's numbers almost exactly with a very large effect (d_z 2.5, p = 4e-8), and confirm that A1 shows the strongest coupling, adding generic PAC caveats (volume conduction, non-sinusoidal waveforms, spectral power, small n). Seeing that the subtypes differ two-fold in length and that the estimator's floor scales with length requires interrogating the measure against the annotation, not running more contrasts. Risks: PAC-literate agents may z-score against surrogates as a habit; routine per-segment significance testing shows coupling barely above chance (7-8% of segments pass the 95th percentile in every subtype); the paper's Methods give the duration rationale for the >2-cycle rule, which an agent recalling the paper may follow up (the task runs offline). All of these are accepted as sufficient routes when linked to the subtype ordering: equal-length windows, floor/surrogate subtraction or z-scores, duration-matched pairs or bins, MI vs duration slopes within subtype, duration as a covariate, and an equal share of surrogate-significant segments. The required outputs ask for no significance-against-chance quantity. Stage 5 decides.",
  "cue_terms": [
   "debias",
   "de-bias",
@@ -877,5 +929,35 @@
   "window length"
  ],
  "verdict": "build_hard_candidate",
- "verdict_reason": "The paper's ordering reproduces on its own data with its estimator (A1 0.0122 > A2 > A3 0.0072; A1 - A3 +0.00503, d_z 2.54, p = 4e-08) and the predeclared rule gives 'length bias accounts': the finite-sample floor alone is 84% of the difference, and at equal 4-s length or after subtracting the floor A1 - A3 falls to 17% / 16% of raw. Robust across crop lengths, the 1-2.5 Hz band, F4-C4 and surrogate z. Off the requested execution path and un-cued; fair because MI's length dependence is a documented property of the estimator and the paper's own inclusion rule shows the authors considered duration."
+ "verdict_reason": "The paper's ordering reproduces on its own data with its estimator (A1 0.0122 > A2 > A3 0.0072; A1 - A3 +0.00503, d_z 2.54, p = 4e-08) and the predeclared rule gives 'length bias accounts': the finite-sample floor alone is 84% of the difference, and at equal 4-s length or after subtracting the floor A1 - A3 falls to 17% / 16% of raw. Robust across crop lengths, the 1-2.5 Hz band, F4-C4 and surrogate z. Off the requested execution path and un-cued; fair because MI's length dependence is a documented property of the estimator and the paper's own inclusion rule shows the authors considered duration.",
+ "retrospective_notes": [
+  {
+   "date": "2026-10-09",
+   "timing": "post_probe",
+   "record_ref": {
+    "artifact_id": "CAPPAC-001:step0_claim_scope_addendum.md",
+    "uri": "step0/claim_scope_addendum.md",
+    "sha256": "e0cdcfda205533a22338e211bc514702906012981b1c835665e2bcadb9cd4fbd",
+    "media_type": "text/markdown",
+    "visibility": "author_private"
+   },
+   "evidence_refs": [
+    {
+     "artifact_id": "CAPPAC-001:step0_posthoc_sigonly.py",
+     "uri": "step0/posthoc_sigonly.py",
+     "sha256": "15e15c3d074460d71e7aa1bcc37541db81e235d5f0df1fdfb1e2f13dc504d445",
+     "media_type": "text/x-python",
+     "visibility": "author_private"
+    },
+    {
+     "artifact_id": "CAPPAC-001:step0_outputs_posthoc_sigonly.log",
+     "uri": "step0/outputs/posthoc_sigonly.log",
+     "sha256": "0f19bf065bfab9e14efd4e16d6a5572931e771f54324d47056936935891d8af0",
+     "media_type": "text/plain",
+     "visibility": "author_private"
+    }
+   ],
+   "note": "Which segments Fig. 3a averages (open in claim_scope.md): all analysed segments; surrogate-significant-only means would be about twice the bars. The paper's per-segment surrogate significance test is therefore left out of the pinned method and of the instruction; the paper is never described as lacking surrogate testing. The >2-cycle rule is stated neutrally in the instruction; its stated purpose (reducing duration-related MI differences) is omitted there because it names the diagnostic and is not needed to state the objective or run the method, and the task runs offline. Duration is described in the oracle, proposal and evidence as acknowledged and partly addressed by the authors."
+  }
+ ]
 }

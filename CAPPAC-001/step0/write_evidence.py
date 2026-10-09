@@ -16,6 +16,8 @@ M, LOG, CSV, MAN, FREEZE = (R(p) for p in ("step0/outputs/metrics.json", "step0/
 SEG = R("step0/outputs/segments.csv")
 PZ, PZLOG, PZJ = R("step0/posthoc_z.py"), R("step0/outputs/posthoc_z.log"), R("step0/outputs/posthoc_z.json")
 PB, PBLOG, PBJ = R("step0/posthoc_bands.py"), R("step0/outputs/posthoc_bands.log"), R("step0/outputs/posthoc_bands.json")
+PC, PCLOG = R("step0/posthoc_covariate.py"), R("step0/outputs/posthoc_covariate.log")
+PS, PSLOG, ADD = R("step0/posthoc_sigonly.py"), R("step0/outputs/posthoc_sigonly.log"), R("step0/claim_scope_addendum.md")
 raw, dur, fl, crop, deb, ex = (m[k] for k in ("raw_A1_A3", "premise_duration_A1_A3", "premise_floor_A1_A3",
                                                "ctrl_crop4_A1_A3", "ctrl_debias_A1_A3", "exploratory"))
 d_raw = raw["mean"]
@@ -128,8 +130,8 @@ ev = {
                                f"Both point estimates <= 25% and upper CIs < 50% of raw. A small debiased residual remains (p = {deb['p']:.2g}).")}},
     ],
     "exploratory": {
-        "status": "measured", "evidence_refs": [M, LOG, PZ, PZLOG, PZJ, PB, PBLOG, PBJ],
-        "note": "Predeclared exploratory analyses (run.log) plus two post-hoc diagnostics written after run.log; none used for the decision.",
+        "status": "measured", "evidence_refs": [M, LOG, PZ, PZLOG, PZJ, PB, PBLOG, PBJ, PC, PCLOG, PS, PSLOG],
+        "note": "Predeclared exploratory analyses (run.log) plus four post-hoc diagnostics written after run.log; none used for the decision.",
         "value": {
             "crop_windows_A1_A3": {k: small(ex[k]) for k in ("mi_first3", "mi_first5", "mi_first6", "mi_mid4")},
             "duration_matched_1s_bins_4_10s": small(ex["duration_matched_A1_A3"]),
@@ -138,13 +140,23 @@ ev = {
             "posthoc_surrogate_z_A1_A3": {k: small(z[k]) for k in ("z_circ", "z_swap", "sig_swap")},
             "posthoc_delta_1_2.5Hz": {k: small(bands[f"delta1_{k}"]) for k in ("mi_raw", "floor", "mi_first4", "mi_debias")},
             "posthoc_F4C4": {k: small(bands[f"f4c4_{k}"]) for k in ("mi_raw", "floor", "mi_first4", "mi_debias")},
+            "posthoc_duration_covariate_mixedlm_A1_A3": {"none": "+0.00524 p=2.3e-72", "linear": "+0.00137 p=1.7e-05",
+                                                        "inverse": "+0.00085 p=0.0033", "log": "+0.00017 p=0.57",
+                                                        "subject_level_residualised_on_inverse": "+0.00060 t15=1.49 p=0.16"},
+            "posthoc_surrogate_significant_only_subject_means": {"all_segments": {"A1": 0.0122, "A2": 0.0096, "A3": 0.0072},
+                                                                 "significant_only": {"A1": 0.0218, "A2": 0.0178, "A3": 0.0147},
+                                                                 "fig3a_read": {"A1": 0.0118, "A2": 0.0100, "A3": 0.0065}},
         },
         "reading": ("Every other crop length (3, 5, 6 s) and the middle 4 s give A1 - A3 within +-0.0008 (all p > .3); 1-s duration "
                     "bins give +0.0013 [-0.0002, +0.0027]. Surrogate z-scored MI shows no subtype difference (circular shifts p = .09, "
                     "the paper's block-swap surrogates p = .17), and only 7-8% of segments of any subtype exceed the 95th percentile "
                     "of their block-swap surrogates. With delta 1-2.5 Hz or the F4-C4 derivation the floor is 94-96% of the raw "
                     "difference and both controls are null (4-16% of raw, p > .13). The paper's secondary 'light > deep' reading "
-                    "behaves the same way within A1: S2 - S4 raw +0.0035 (p = .0001), cropped -0.0004 (p = .59), debiased -0.0001."),
+                    "behaves the same way within A1: S2 - S4 raw +0.0035 (p = .0001), cropped -0.0004 (p = .59), debiased -0.0001. "
+                    "Adjusting for duration as a covariate (segment-level mixed model) shrinks A1 - A3 by 74% (linear), 84% (1/duration) "
+                    "or 97% (log duration); the linear and inverse fits stay significant only at the segment level (pseudo-replication), "
+                    "and the subject-level residualised contrast is +0.0006 (p = .16). Fig. 3a matches the all-segment means; means over "
+                    "surrogate-significant segments only would be about twice as high (claim_scope_addendum.md)."),
     },
     "lever": {
         "name": ("data length: the Tort MI of a short segment has a positive finite-sample floor (~1/length), and A1 segments are about "
@@ -182,9 +194,12 @@ ev = {
         "confirm that A1 shows the strongest coupling, adding generic PAC caveats (volume conduction, non-sinusoidal waveforms, spectral "
         "power, small n). Seeing that the subtypes differ two-fold in length and that the estimator's floor scales with length requires "
         "interrogating the measure against the annotation, not running more contrasts. Risks: PAC-literate agents may z-score against "
-        "surrogates as a habit (that route also shows no subtype difference, and is accepted if they link it to the ordering); the "
-        "paper's own Methods mention the duration rationale for the >2-cycle rule, which an agent reading the paper may follow up. "
-        "Stage 5 decides."),
+        "surrogates as a habit; routine per-segment significance testing shows coupling barely above chance (7-8% of segments pass "
+        "the 95th percentile in every subtype); the paper's Methods give the duration rationale for the >2-cycle rule, which an agent "
+        "recalling the paper may follow up (the task runs offline). All of these are accepted as sufficient routes when linked to the "
+        "subtype ordering: equal-length windows, floor/surrogate subtraction or z-scores, duration-matched pairs or bins, MI vs "
+        "duration slopes within subtype, duration as a covariate, and an equal share of surrogate-significant segments. The required "
+        "outputs ask for no significance-against-chance quantity. Stage 5 decides."),
     "cue_terms": ["debias", "de-bias", "bias", "floor", "surrogate", "normalis", "normaliz", "z-scor", "chance", "equal-length",
                   "equal length", "fixed-length", "fixed length", "length-matched", "duration-matched", "matched duration",
                   "data length", "segment length", "sample size", "number of samples", "crop", "truncat", "window length"],
@@ -197,5 +212,13 @@ ev = {
         "band, F4-C4 and surrogate z. Off the requested execution path and un-cued; fair because MI's length dependence is a "
         "documented property of the estimator and the paper's own inclusion rule shows the authors considered duration."),
 }
+ev["retrospective_notes"] = [{
+    "date": "2026-10-09", "timing": "post_probe", "record_ref": ADD, "evidence_refs": [PS, PSLOG],
+    "note": ("Which segments Fig. 3a averages (open in claim_scope.md): all analysed segments; surrogate-significant-only means would "
+             "be about twice the bars. The paper's per-segment surrogate significance test is therefore left out of the pinned "
+             "method and of the instruction; the paper is never described as lacking surrogate testing. The >2-cycle rule is stated "
+             "neutrally in the instruction; its stated purpose (reducing duration-related MI differences) is omitted there because it "
+             "names the diagnostic and is not needed to state the objective or run the method, and the task runs offline. Duration is "
+             "described in the oracle, proposal and evidence as acknowledged and partly addressed by the authors.")}]
 json.dump(ev, open("step0/evidence.json", "w"), indent=1)
 print("wrote step0/evidence.json")

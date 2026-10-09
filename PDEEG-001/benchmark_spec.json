@@ -1,0 +1,136 @@
+{
+  "schema_version": "benchmark-question-spec-v1",
+  "question_id": "PDEEG-001",
+  "opportunity_id": "adhoc:PDEEG-001",
+  "paper_candidate_id": "10.1038/s41598-022-26644-7",
+  "public_instruction_ref": {
+    "artifact_id": "PDEEG-001:instruction.md",
+    "uri": "instruction.md",
+    "sha256": "c11c4884f9460a71021f63b5c940f84844a38dee838b7ace662f7bfc72795920",
+    "media_type": "text/markdown",
+    "visibility": "public"
+  },
+  "fixed_substrate_ref": {
+    "artifact_id": "PDEEG-001:task.toml",
+    "uri": "task.toml",
+    "sha256": "3a88c352aac3ebb337a2fd8954c1620d77c6011f75a77dca4295622dc4c32bd2",
+    "media_type": "application/octet-stream",
+    "visibility": "public"
+  },
+  "expected_output_schema_ref": {
+    "artifact_id": "PDEEG-001:instruction.md",
+    "uri": "instruction.md",
+    "sha256": "c11c4884f9460a71021f63b5c940f84844a38dee838b7ace662f7bfc72795920",
+    "media_type": "text/markdown",
+    "visibility": "public"
+  },
+  "oracle_ref": {
+    "artifact_id": "PDEEG-001:solution_compute.py",
+    "uri": "solution/compute.py",
+    "sha256": "fc7a7b81b294f337da39493202c2362015531d325ef04c5a50f7f2e1a46768f9",
+    "media_type": "text/x-python",
+    "visibility": "oracle_private"
+  },
+  "verifier_ref": {
+    "artifact_id": "PDEEG-001:tests_test_outputs.py",
+    "uri": "tests/test_outputs.py",
+    "sha256": "7ef95ecbaaafd4a1d2d1ab9f539102b91f07c2ea97c4cfdce41946a543b0ed37",
+    "media_type": "text/x-python",
+    "visibility": "oracle_private"
+  },
+  "required_artifact_refs": [
+    {
+      "artifact_id": "PDEEG-001:instruction.md",
+      "uri": "instruction.md",
+      "sha256": "c11c4884f9460a71021f63b5c940f84844a38dee838b7ace662f7bfc72795920",
+      "media_type": "text/markdown",
+      "visibility": "public"
+    },
+    {
+      "artifact_id": "PDEEG-001:task.toml",
+      "uri": "task.toml",
+      "sha256": "3a88c352aac3ebb337a2fd8954c1620d77c6011f75a77dca4295622dc4c32bd2",
+      "media_type": "application/octet-stream",
+      "visibility": "public"
+    },
+    {
+      "artifact_id": "PDEEG-001:environment_Dockerfile",
+      "uri": "environment/Dockerfile",
+      "sha256": "ffd55a13315d39ba946dc1ef53b934da2a58cab7d91f165e7a7782ca7bf85596",
+      "media_type": "application/octet-stream",
+      "visibility": "public"
+    },
+    {
+      "artifact_id": "PDEEG-001:solution_solve.sh",
+      "uri": "solution/solve.sh",
+      "sha256": "f10bfdf873b431245423424b64d2b113609104af533b0b10b4420e158b1b34bf",
+      "media_type": "application/x-sh",
+      "visibility": "oracle_private"
+    },
+    {
+      "artifact_id": "PDEEG-001:solution_compute.py",
+      "uri": "solution/compute.py",
+      "sha256": "fc7a7b81b294f337da39493202c2362015531d325ef04c5a50f7f2e1a46768f9",
+      "media_type": "text/x-python",
+      "visibility": "oracle_private"
+    },
+    {
+      "artifact_id": "PDEEG-001:tests_test.sh",
+      "uri": "tests/test.sh",
+      "sha256": "f456c431b5a04fc5ac1b84413d7aac9f99bca2b97f3f34cdc8c71ee6c3fa68e4",
+      "media_type": "application/x-sh",
+      "visibility": "oracle_private"
+    },
+    {
+      "artifact_id": "PDEEG-001:tests_test_outputs.py",
+      "uri": "tests/test_outputs.py",
+      "sha256": "7ef95ecbaaafd4a1d2d1ab9f539102b91f07c2ea97c4cfdce41946a543b0ed37",
+      "media_type": "text/x-python",
+      "visibility": "oracle_private"
+    },
+    {
+      "artifact_id": "PDEEG-001:proposal.md",
+      "uri": "proposal.md",
+      "sha256": "887257db88346575bfdc49578824fcc9f45695f37ab87ff9273c187ea5e2056e",
+      "media_type": "text/markdown",
+      "visibility": "author_private"
+    },
+    {
+      "artifact_id": "PDEEG-001:step0_evidence.json",
+      "uri": "step0/evidence.json",
+      "sha256": "a6dd2240d68512c882c76a96d55922ecde3ccdf7f1b72210c8b830486661795d",
+      "media_type": "application/json",
+      "visibility": "author_private"
+    }
+  ],
+  "private_failure_axis_ref": {
+    "artifact_id": "PDEEG-001:step0_evidence.json",
+    "uri": "step0/evidence.json",
+    "sha256": "a6dd2240d68512c882c76a96d55922ecde3ccdf7f1b72210c8b830486661795d",
+    "media_type": "application/json",
+    "visibility": "author_private"
+  },
+  "private_hidden_lever_ref": {
+    "artifact_id": "PDEEG-001:step0_evidence.json",
+    "uri": "step0/evidence.json",
+    "sha256": "a6dd2240d68512c882c76a96d55922ecde3ccdf7f1b72210c8b830486661795d",
+    "media_type": "application/json",
+    "visibility": "author_private"
+  },
+  "calibration_status": "not_run",
+  "release_status": "draft",
+  "benchmark_verdict": "build_hard_candidate",
+  "intake_route": [
+    "advance_to_step0"
+  ],
+  "critical_path_result": "no, as built: instruction.md pins the paper's 10 x 10-fold CV over segments; the participant-held-out evaluation is required only by the estimate check, which the instruction does not describe",
+  "agent_headroom_hypothesis": "With the paper's segment-level CV pinned, agents reproduce ~99.7% and report that the result reproduces, possibly with a generic 'small sample' or 'leakage may inflate' caveat but without a subject-independent number. Risks that shrink the gap: subject leakage in EEG is a widely known pitfall, the paper itself names it, and the dataset README warns about high-accuracy claims, so a careful agent may volunteer LOSO. Calibration must decide; as built, the verifier requires the reported estimate to come from a replayable cross-validation in which no participant is in both training and test (tests/test_outputs.py), not a caveat. The instruction's estimate field ('the accuracy you would report for this pipeline as a PD-vs-control classifier') and the required participant_id column are residual cues.",
+  "step0_evidence_ref": {
+    "artifact_id": "PDEEG-001:step0_evidence.json",
+    "uri": "step0/evidence.json",
+    "sha256": "a6dd2240d68512c882c76a96d55922ecde3ccdf7f1b72210c8b830486661795d",
+    "media_type": "application/json",
+    "visibility": "author_private"
+  },
+  "calibration_plan": "oracle reward 1.0 in-container; calibration/fixtures discrimination (tools/check_verifier.py); >=2 frontier families x k>=3, hand re-scored (TASK_WORKFLOW.md Stages 4-5)"
+}

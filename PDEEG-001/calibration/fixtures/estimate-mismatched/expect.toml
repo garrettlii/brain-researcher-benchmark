@@ -1,0 +1,4 @@
+note = "manufactured: estimate names the leave-one-participant-out evaluation but quotes the segment-level 99.7%"
+[expect]
+test_features_and_paper_evaluation = "pass"
+test_estimate_comes_from_unseen_participants = "fail"

@@ -1,0 +1,35 @@
+version = "1.1"
+instruction_version = "1.0"
+test_version = "1.0"
+artifacts = ["/app/output"]
+
+[metadata]
+task_id = "PDEEG-001"
+# Metadata is for maintainers; the agent sees only instruction.md.
+title = "Reproduce Aljalal 2022's 99.7% EEG Parkinson's classifier: un-cued participant leakage in segment-level CV"
+category = "EEG"
+# Target difficulty; not yet measured (Harbor oracle and frontier-agent calibration pending).
+difficulty = "hard"
+dataset_source = "OpenNeuro ds002778 (CC0): 31 resting recordings (16 HC, 15 PD off medication) staged and sha256-checked at image build; offline runtime"
+dataset_id = "ds002778"
+source_paper = "Aljalal et al. 2022, Scientific Reports 12:22547 (10.1038/s41598-022-26644-7)"
+
+# Oracle: 130 s locally (Apple M-series, 1 process; feature extraction ~20 s, 1000-draw
+# permutation ~100 s). Verifier: ~15 s (recomputes reference features from the recordings).
+[verifier]
+timeout_sec = 1200.0
+
+[agent]
+timeout_sec = 3600.0
+
+[environment]
+build_timeout_sec = 2400.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 16384
+gpus = 0
+allow_internet = false
+
+[verifier.env]
+
+[solution.env]

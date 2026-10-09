@@ -1,0 +1,9 @@
+# DS002778_DIR=<staged ds002778> python authoring/feature_tolerance.py   (2026-10-08, venv = step0/outputs/pip_freeze.txt)
+stated (waverec, zeroed coefficients)    within band 1.0000  max |diff| 3
+per-segment demean                       within band 1.0000  max |diff| 3
+filtfilt(b, a)                           within band 1.0000  max |diff| 141
+filter whole recording, then segment     within band 0.9802  max |diff| 122
+no re-reference                          within band 0.5963  max |diff| 1501
+causal filter (sosfilt)                  within band 0.6514  max |diff| 2906
+periodic extension                       within band 0.8338  max |diff| 374
+threshold 0.1                            within band 0.4248  max |diff| 2097

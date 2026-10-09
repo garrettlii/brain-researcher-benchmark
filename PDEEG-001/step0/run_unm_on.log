@@ -1,0 +1,92 @@
+     3s PD801 off ses2: 60 segments
+     4s PD801 on ses1: 60 segments
+     6s HC894 hc ses1: 60 segments
+     7s PD802 off ses1: 60 segments
+     8s PD802 on ses2: 60 segments
+     9s HC908 hc ses1: 60 segments
+    11s PD804 off ses2: 60 segments
+    12s PD804 on ses1: 60 segments
+    13s HC906 hc ses1: 60 segments
+    14s PD805 off ses2: 60 segments
+    16s PD805 on ses1: 60 segments
+    17s HC903 hc ses1: 60 segments
+    18s PD806 off ses1: 60 segments
+    19s PD806 on ses2: 60 segments
+    21s HC8060 hc ses1: 60 segments
+    22s PD807 off ses1: 60 segments
+    23s PD807 on ses2: 60 segments
+    24s HC893 hc ses1: 60 segments
+    26s PD808 off ses1: 60 segments
+    27s PD808 on ses2: 60 segments
+    28s HC909 hc ses1: 60 segments
+    29s PD809 off ses2: 60 segments
+    30s PD809 on ses1: 60 segments
+    32s HC911 hc ses1: 60 segments
+    33s PD810 off ses2: 60 segments
+    34s PD810 on ses1: 60 segments
+    35s HC895 hc ses1: 60 segments
+    36s PD811 off ses2: 60 segments
+    38s PD811 on ses1: 60 segments
+    39s HC913 hc ses1: 60 segments
+    40s PD813 off ses1: 60 segments
+    42s PD813 on ses2: 60 segments
+    43s HC900 hc ses1: 60 segments
+    45s PD814 off ses2: 60 segments
+    46s PD814 on ses1: 60 segments
+    47s HC896 hc ses1: 60 segments
+    49s PD815 off ses2: 60 segments
+    50s PD815 on ses1: 60 segments
+    51s HC899 hc ses1: 60 segments
+    52s PD816 off ses1: 60 segments
+    54s PD816 on ses2: 60 segments
+    55s HC914 hc ses1: 60 segments
+    56s PD817 off ses1: 60 segments
+    57s PD817 on ses2: 60 segments
+    58s HC910 hc ses1: 60 segments
+    60s PD818 off ses2: 60 segments
+    61s PD818 on ses1: 60 segments
+    62s HC890 hc ses1: 60 segments
+    63s PD819 off ses1: 60 segments
+    65s PD819 on ses2: 60 segments
+    66s HC891 hc ses1: 60 segments
+    67s PD820 off ses2: 60 segments
+    68s PD820 on ses1: 60 segments
+    70s HC912 hc ses1: 60 segments
+    71s PD821 off ses2: 60 segments
+    73s PD821 on ses1: 120 segments
+    74s HC905 hc ses1: 60 segments
+    76s PD822 off ses2: 60 segments
+    77s PD822 on ses1: 60 segments
+    78s HC904 hc ses1: 60 segments
+    79s PD823 off ses1: 60 segments
+    80s PD823 on ses2: 60 segments
+    82s HC892 hc ses1: 60 segments
+    83s PD824 off ses1: 60 segments
+    84s PD824 on ses2: 60 segments
+    85s HC902 hc ses1: 60 segments
+    87s PD825 off ses2: 60 segments
+    88s PD825 on ses1: 60 segments
+    89s HC901 hc ses1: 60 segments
+    90s PD826 off ses2: 60 segments
+    91s PD826 on ses1: 60 segments
+    93s HC898 hc ses1: 60 segments
+    94s PD827 off ses1: 60 segments
+    95s PD827 on ses2: 60 segments
+    96s HC897 hc ses1: 60 segments
+    97s PD828 off ses1: 60 segments
+    99s PD828 on ses2: 60 segments
+    99s HC8070 hc ses1: 32 segments
+   101s PD829 off ses1: 60 segments
+   102s PD829 on ses2: 60 segments
+   103s HC907 hc ses1: 60 segments
+   737s onPD_vs_HC|open|ThEn {"n_pd_segments": 840, "n_hc_segments": 810, "SEG_10x10fold_acc": 0.9887, "LOSO_ALL": {"loso_mean_subject_acc": 0.4935, "subject_vote_correct": 28, "n_subjects": 54, "subject_vote_ci95_exact": [0.378, 0.657]}, "FA_PAPER": {"loso_acc_max_over_steps": 0.7327, "n_channels": 10, "channels": ["PO4", "CP2", "AF3", "Cz", "CP6", "Oz", "FC1", "O2", "Pz", "FC2"]}, "FA_NESTED": {"loso_mean_subject_acc": 0.5892, "subject_vote_correct": 31, "n_subjects": 54, "subject_vote_ci95_exact": [0.432, 0.708], "inner_selected_n_channels_median": 9.0, "inner_fa_acc_mean": 0.7343}}
+   788s onPD_vs_HC|open|SuEn {"n_pd_segments": 840, "n_hc_segments": 810, "SEG_10x10fold_acc": 0.9632, "LOSO_ALL": {"loso_mean_subject_acc": 0.6139, "subject_vote_correct": 39, "n_subjects": 54, "subject_vote_ci95_exact": [0.584, 0.835]}, "FA_PAPER": {"loso_acc_max_over_steps": 0.7642, "n_channels": 7, "channels": ["CP6", "CP2", "PO3", "Cz", "O2", "T7", "FC2"]}}
+   825s onPD_vs_HC|open|LogEn {"n_pd_segments": 840, "n_hc_segments": 810, "SEG_10x10fold_acc": 0.983, "LOSO_ALL": {"loso_mean_subject_acc": 0.5346, "subject_vote_correct": 31, "n_subjects": 54, "subject_vote_ci95_exact": [0.432, 0.708]}, "FA_PAPER": {"loso_acc_max_over_steps": 0.7485, "n_channels": 10, "channels": ["CP6", "CP2", "O2", "PO3", "FC2", "P7", "PO4", "Cz", "FC5", "Fz"]}}
+   854s onPD_vs_HC|open|TShEn {"n_pd_segments": 840, "n_hc_segments": 810, "SEG_10x10fold_acc": 0.6953, "LOSO_ALL": {"loso_mean_subject_acc": 0.5293, "subject_vote_correct": 28, "n_subjects": 54, "subject_vote_ci95_exact": [0.378, 0.657]}, "FA_PAPER": {"loso_acc_max_over_steps": 0.6559, "n_channels": 11, "channels": ["O2", "CP2", "Cz", "PO3", "P8", "C4", "CP1", "T8", "CP6", "C3", "O1"]}}
+  1130s on|open|SuEn_LDA FA_PAPER 0.8028 (14 ch)
+  1711s onPD_vs_HC|closed|ThEn {"n_pd_segments": 840, "n_hc_segments": 782, "SEG_10x10fold_acc": 0.9787, "LOSO_ALL": {"loso_mean_subject_acc": 0.6802, "subject_vote_correct": 40, "n_subjects": 54, "subject_vote_ci95_exact": [0.603, 0.85]}, "FA_PAPER": {"loso_acc_max_over_steps": 0.779, "n_channels": 13, "channels": ["Oz", "CP6", "F3", "CP5", "P8", "Cz", "FC5", "F8", "CP2", "Pz", "C4", "O2", "FC2"]}, "FA_NESTED": {"loso_mean_subject_acc": 0.734, "subject_vote_correct": 42, "n_subjects": 54, "subject_vote_ci95_exact": [0.644, 0.88], "inner_selected_n_channels_median": 10.0, "inner_fa_acc_mean": 0.7884}}
+  1736s onPD_vs_HC|closed|SuEn {"n_pd_segments": 840, "n_hc_segments": 782, "SEG_10x10fold_acc": 0.9541, "LOSO_ALL": {"loso_mean_subject_acc": 0.692, "subject_vote_correct": 37, "n_subjects": 54, "subject_vote_ci95_exact": [0.544, 0.805]}, "FA_PAPER": {"loso_acc_max_over_steps": 0.783, "n_channels": 14, "channels": ["O1", "Cz", "P8", "Fp1", "CP2", "F3", "Oz", "FC1", "AF3", "F7", "C4", "FC5", "CP5", "PO4"]}}
+  1762s onPD_vs_HC|closed|LogEn {"n_pd_segments": 840, "n_hc_segments": 782, "SEG_10x10fold_acc": 0.9819, "LOSO_ALL": {"loso_mean_subject_acc": 0.7142, "subject_vote_correct": 43, "n_subjects": 54, "subject_vote_ci95_exact": [0.665, 0.894]}, "FA_PAPER": {"loso_acc_max_over_steps": 0.8062, "n_channels": 8, "channels": ["O1", "CP2", "F3", "Cz", "O2", "F8", "P7", "CP6"]}}
+  1789s onPD_vs_HC|closed|TShEn {"n_pd_segments": 840, "n_hc_segments": 782, "SEG_10x10fold_acc": 0.7452, "LOSO_ALL": {"loso_mean_subject_acc": 0.5898, "subject_vote_correct": 38, "n_subjects": 54, "subject_vote_ci95_exact": [0.564, 0.82]}, "FA_PAPER": {"loso_acc_max_over_steps": 0.708, "n_channels": 6, "channels": ["Oz", "CP2", "Cz", "T7", "CP5", "PO4"]}}
+  2235s on|closed|SuEn_LDA FA_PAPER 0.8133 (12 ch)
+  2235s done

@@ -1,0 +1,3 @@
+note = "manufactured: oracle output, estimate from the participant-grouped 10 x 10 CV, written in percent"
+[expect]
+"*" = "pass"

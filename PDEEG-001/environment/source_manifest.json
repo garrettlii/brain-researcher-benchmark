@@ -1,0 +1,598 @@
+{
+ "dataset_id": "ds002778",
+ "dataset_doi": "10.18112/openneuro.ds002778.v1.0.4",
+ "license": "CC0",
+ "captured": "2026-10-08",
+ "n_files": 98,
+ "total_bytes": 382438767,
+ "files": [
+  {
+   "path": "README",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/README",
+   "bytes": 4487,
+   "sha256": "eb8807a2d1968164f375f8cc3e0bb3bbeed3246907c6ea0c13bfdaf172b666be"
+  },
+  {
+   "path": "CHANGES",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/CHANGES",
+   "bytes": 269,
+   "sha256": "06920d0e9597f830390403a59fdbc9a3701ffada9ad4874bed293f523ec3664c"
+  },
+  {
+   "path": "dataset_description.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/dataset_description.json",
+   "bytes": 350,
+   "sha256": "446f4bdde322abdee7b0f53babbe8a70a7c7e9951c8be386f1910c8185fa279c"
+  },
+  {
+   "path": "participants.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/participants.tsv",
+   "bytes": 1658,
+   "sha256": "e26c2cd97197a851347b2d2ce6f3861fd62370f38d1873ea67576dc1a4deea21"
+  },
+  {
+   "path": "participants.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/participants.json",
+   "bytes": 1273,
+   "sha256": "416f0c1da43442d6beb06d8f27b6edd8081e65b8c5a2e692caff74b98e354791"
+  },
+  {
+   "path": "sub-hc1/ses-hc/eeg/sub-hc1_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc1/ses-hc/eeg/sub-hc1_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc1/ses-hc/eeg/sub-hc1_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc1/ses-hc/eeg/sub-hc1_ses-hc_task-rest_eeg.bdf",
+   "bytes": 12102144,
+   "sha256": "e11c5a6e901a268a2e83acf724244bed89716552e50d48cf3a6a13cc6a1a3e0e"
+  },
+  {
+   "path": "sub-hc1/ses-hc/eeg/sub-hc1_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc1/ses-hc/eeg/sub-hc1_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "072e74743638063a46f05a618a13baaf770eab3825ea36b47da3c117bbdafede"
+  },
+  {
+   "path": "sub-hc10/ses-hc/eeg/sub-hc10_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc10/ses-hc/eeg/sub-hc10_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc10/ses-hc/eeg/sub-hc10_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc10/ses-hc/eeg/sub-hc10_ses-hc_task-rest_eeg.bdf",
+   "bytes": 12668928,
+   "sha256": "3e7a77a57cc8a92eab82d79c756d3db220783e4a719101fb1a07662ffdb3dad8"
+  },
+  {
+   "path": "sub-hc10/ses-hc/eeg/sub-hc10_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc10/ses-hc/eeg/sub-hc10_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "935db73847625c7ba6e9adcd5f49afc4e7c9771eef84e78b3cece24f04b9e147"
+  },
+  {
+   "path": "sub-hc18/ses-hc/eeg/sub-hc18_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc18/ses-hc/eeg/sub-hc18_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc18/ses-hc/eeg/sub-hc18_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc18/ses-hc/eeg/sub-hc18_ses-hc_task-rest_eeg.bdf",
+   "bytes": 11724288,
+   "sha256": "4e40bb09831d7f0d91b79370987485774121b0d5eff07d48b8b1d620c39a2f82"
+  },
+  {
+   "path": "sub-hc18/ses-hc/eeg/sub-hc18_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc18/ses-hc/eeg/sub-hc18_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "da727f506e8ad186fab6467a805617d58183cae3c82a0a7b9648fd06644369b9"
+  },
+  {
+   "path": "sub-hc2/ses-hc/eeg/sub-hc2_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc2/ses-hc/eeg/sub-hc2_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc2/ses-hc/eeg/sub-hc2_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc2/ses-hc/eeg/sub-hc2_ses-hc_task-rest_eeg.bdf",
+   "bytes": 12228096,
+   "sha256": "0a8db7e1e58bb680df2316010d6f92c88e16bb0f57b4b5da01368c64897094e1"
+  },
+  {
+   "path": "sub-hc2/ses-hc/eeg/sub-hc2_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc2/ses-hc/eeg/sub-hc2_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "14a7967a6705ad17fed9695516299d72fa2f90be28c00bc4c812ce02a9b3fad6"
+  },
+  {
+   "path": "sub-hc20/ses-hc/eeg/sub-hc20_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc20/ses-hc/eeg/sub-hc20_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc20/ses-hc/eeg/sub-hc20_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc20/ses-hc/eeg/sub-hc20_ses-hc_task-rest_eeg.bdf",
+   "bytes": 11598336,
+   "sha256": "1340be11e3843a59c4ebae15e76068779633720356b1d9a28549ff22051239fa"
+  },
+  {
+   "path": "sub-hc20/ses-hc/eeg/sub-hc20_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc20/ses-hc/eeg/sub-hc20_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "2b80017e1f16e8e5efda4dcd8b7de2dba2c122b7759ec675a1c9496ac706c8db"
+  },
+  {
+   "path": "sub-hc21/ses-hc/eeg/sub-hc21_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc21/ses-hc/eeg/sub-hc21_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc21/ses-hc/eeg/sub-hc21_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc21/ses-hc/eeg/sub-hc21_ses-hc_task-rest_eeg.bdf",
+   "bytes": 11913216,
+   "sha256": "d5cfe50177ed9df823d5765a29de13d6aee917f25842ed25e347cc45404496f7"
+  },
+  {
+   "path": "sub-hc21/ses-hc/eeg/sub-hc21_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc21/ses-hc/eeg/sub-hc21_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "038508cdb78af7aa16d7ef48e7ac8c64813a66b832ad2ffbfc931c717a5ede2e"
+  },
+  {
+   "path": "sub-hc24/ses-hc/eeg/sub-hc24_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc24/ses-hc/eeg/sub-hc24_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc24/ses-hc/eeg/sub-hc24_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc24/ses-hc/eeg/sub-hc24_ses-hc_task-rest_eeg.bdf",
+   "bytes": 12102144,
+   "sha256": "72b95616bf54eb1f21e5506c9e6421ae50483148c2b02e671c1cca5004f73184"
+  },
+  {
+   "path": "sub-hc24/ses-hc/eeg/sub-hc24_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc24/ses-hc/eeg/sub-hc24_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "072e74743638063a46f05a618a13baaf770eab3825ea36b47da3c117bbdafede"
+  },
+  {
+   "path": "sub-hc25/ses-hc/eeg/sub-hc25_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc25/ses-hc/eeg/sub-hc25_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc25/ses-hc/eeg/sub-hc25_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc25/ses-hc/eeg/sub-hc25_ses-hc_task-rest_eeg.bdf",
+   "bytes": 12731904,
+   "sha256": "31436d6029ffb8a74251054e5e5112a23977e772a9ec5c84e2192b54f18932cc"
+  },
+  {
+   "path": "sub-hc25/ses-hc/eeg/sub-hc25_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc25/ses-hc/eeg/sub-hc25_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "8ec0a051aff106f32f8d0ab8469b812ab88b89cd5fd066b1369700d41efb87a4"
+  },
+  {
+   "path": "sub-hc29/ses-hc/eeg/sub-hc29_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc29/ses-hc/eeg/sub-hc29_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc29/ses-hc/eeg/sub-hc29_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc29/ses-hc/eeg/sub-hc29_ses-hc_task-rest_eeg.bdf",
+   "bytes": 12542976,
+   "sha256": "41011321ecd1e991fe4722a80d84a6fad5826f0d96cac2a4a6ac697a6cc4f2bd"
+  },
+  {
+   "path": "sub-hc29/ses-hc/eeg/sub-hc29_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc29/ses-hc/eeg/sub-hc29_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "52284ea38c32b603e00938ee56ec54d089b14c9767bb837d13b767b8e6910ab1"
+  },
+  {
+   "path": "sub-hc30/ses-hc/eeg/sub-hc30_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc30/ses-hc/eeg/sub-hc30_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc30/ses-hc/eeg/sub-hc30_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc30/ses-hc/eeg/sub-hc30_ses-hc_task-rest_eeg.bdf",
+   "bytes": 11913216,
+   "sha256": "345b50ebd2864dffc09262297311ad87f3378f3c11638eee74912f402bd3809a"
+  },
+  {
+   "path": "sub-hc30/ses-hc/eeg/sub-hc30_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc30/ses-hc/eeg/sub-hc30_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "f732e110af5718b812df0160c4a16f4c8b8793f95478b940cf884dd0d38a438e"
+  },
+  {
+   "path": "sub-hc31/ses-hc/eeg/sub-hc31_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc31/ses-hc/eeg/sub-hc31_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc31/ses-hc/eeg/sub-hc31_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc31/ses-hc/eeg/sub-hc31_ses-hc_task-rest_eeg.bdf",
+   "bytes": 11787264,
+   "sha256": "7578cdc75bf4b443903c1d18e1d8ceed5390423c76505d83603f8fe9c473203a"
+  },
+  {
+   "path": "sub-hc31/ses-hc/eeg/sub-hc31_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc31/ses-hc/eeg/sub-hc31_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "8d74d9909bb492efdb231197e2a746ef2e7aa5c089ed1e0d94eb9d702e9b0aee"
+  },
+  {
+   "path": "sub-hc32/ses-hc/eeg/sub-hc32_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc32/ses-hc/eeg/sub-hc32_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc32/ses-hc/eeg/sub-hc32_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc32/ses-hc/eeg/sub-hc32_ses-hc_task-rest_eeg.bdf",
+   "bytes": 12354048,
+   "sha256": "bddc197a0da32330fd53ddde12d84c101d230c714abb68a214465999272ce403"
+  },
+  {
+   "path": "sub-hc32/ses-hc/eeg/sub-hc32_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc32/ses-hc/eeg/sub-hc32_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "6846a41e163c98a260b9a1037dfe77cc2ed3fed44ad409e842556b4242d84cb0"
+  },
+  {
+   "path": "sub-hc33/ses-hc/eeg/sub-hc33_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc33/ses-hc/eeg/sub-hc33_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc33/ses-hc/eeg/sub-hc33_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc33/ses-hc/eeg/sub-hc33_ses-hc_task-rest_eeg.bdf",
+   "bytes": 11976192,
+   "sha256": "ce1acc0fb774bfbb517b367693c35185187c1e79137611d9ca73cea53cc7a981"
+  },
+  {
+   "path": "sub-hc33/ses-hc/eeg/sub-hc33_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc33/ses-hc/eeg/sub-hc33_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "b8c04995e0db665dc8077d69e0b84701fb467323663d88f0e2dab743666d0da2"
+  },
+  {
+   "path": "sub-hc4/ses-hc/eeg/sub-hc4_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc4/ses-hc/eeg/sub-hc4_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc4/ses-hc/eeg/sub-hc4_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc4/ses-hc/eeg/sub-hc4_ses-hc_task-rest_eeg.bdf",
+   "bytes": 11409408,
+   "sha256": "ad635b9b9ae5819b1b8548bd24630fb75ec7748811dff96746bf589bd8c02403"
+  },
+  {
+   "path": "sub-hc4/ses-hc/eeg/sub-hc4_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc4/ses-hc/eeg/sub-hc4_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "2883db1125918d48c516a3d729e87517267827611e5bcb15ecc76bbeba1a0be9"
+  },
+  {
+   "path": "sub-hc7/ses-hc/eeg/sub-hc7_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc7/ses-hc/eeg/sub-hc7_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc7/ses-hc/eeg/sub-hc7_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc7/ses-hc/eeg/sub-hc7_ses-hc_task-rest_eeg.bdf",
+   "bytes": 12102144,
+   "sha256": "fa553ae0c15398e1969ea6d05275229c180f44c6ce61ebbc3da117a48359ee02"
+  },
+  {
+   "path": "sub-hc7/ses-hc/eeg/sub-hc7_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc7/ses-hc/eeg/sub-hc7_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "072e74743638063a46f05a618a13baaf770eab3825ea36b47da3c117bbdafede"
+  },
+  {
+   "path": "sub-hc8/ses-hc/eeg/sub-hc8_ses-hc_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc8/ses-hc/eeg/sub-hc8_ses-hc_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-hc8/ses-hc/eeg/sub-hc8_ses-hc_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc8/ses-hc/eeg/sub-hc8_ses-hc_task-rest_eeg.bdf",
+   "bytes": 12039168,
+   "sha256": "d24e850af2a8c2275961a16a0db8c9483f54b2074958274156211b794d84946e"
+  },
+  {
+   "path": "sub-hc8/ses-hc/eeg/sub-hc8_ses-hc_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-hc8/ses-hc/eeg/sub-hc8_ses-hc_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "94566d87465a3cf3e82a72b96da39fa9eefaf6ce19b63883d5646b458c5cb8c4"
+  },
+  {
+   "path": "sub-pd11/ses-off/eeg/sub-pd11_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd11/ses-off/eeg/sub-pd11_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd11/ses-off/eeg/sub-pd11_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd11/ses-off/eeg/sub-pd11_ses-off_task-rest_eeg.bdf",
+   "bytes": 11724288,
+   "sha256": "bba083ce1306c26e2aca4eb5e25f39b409d1f5928994fdf92e89be10b41ab972"
+  },
+  {
+   "path": "sub-pd11/ses-off/eeg/sub-pd11_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd11/ses-off/eeg/sub-pd11_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "da727f506e8ad186fab6467a805617d58183cae3c82a0a7b9648fd06644369b9"
+  },
+  {
+   "path": "sub-pd12/ses-off/eeg/sub-pd12_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd12/ses-off/eeg/sub-pd12_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd12/ses-off/eeg/sub-pd12_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd12/ses-off/eeg/sub-pd12_ses-off_task-rest_eeg.bdf",
+   "bytes": 13046784,
+   "sha256": "e64b64ec1f3699284178689256e6e03a3ddecf16a4f475a35b6ac848778ea263"
+  },
+  {
+   "path": "sub-pd12/ses-off/eeg/sub-pd12_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd12/ses-off/eeg/sub-pd12_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "cbcdb63fccc963939cfa532efd1104d54c289f6b6b6162363ebb7944e91843b9"
+  },
+  {
+   "path": "sub-pd13/ses-off/eeg/sub-pd13_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd13/ses-off/eeg/sub-pd13_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd13/ses-off/eeg/sub-pd13_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd13/ses-off/eeg/sub-pd13_ses-off_task-rest_eeg.bdf",
+   "bytes": 11724288,
+   "sha256": "13e62e135ae9530d74bc6b8d7e7b9b668e710a3ca6a143888c3932f20b1f0add"
+  },
+  {
+   "path": "sub-pd13/ses-off/eeg/sub-pd13_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd13/ses-off/eeg/sub-pd13_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "da727f506e8ad186fab6467a805617d58183cae3c82a0a7b9648fd06644369b9"
+  },
+  {
+   "path": "sub-pd14/ses-off/eeg/sub-pd14_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd14/ses-off/eeg/sub-pd14_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd14/ses-off/eeg/sub-pd14_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd14/ses-off/eeg/sub-pd14_ses-off_task-rest_eeg.bdf",
+   "bytes": 18399744,
+   "sha256": "76223b05f5fe7e1e45e5a3d3813f9d24a2b34a91fefb3b9900539e68397e342d"
+  },
+  {
+   "path": "sub-pd14/ses-off/eeg/sub-pd14_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd14/ses-off/eeg/sub-pd14_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "a96d2d2eba798288234f8c0a69813076ae0f9b96c8d776d5571fcda1f9830fac"
+  },
+  {
+   "path": "sub-pd16/ses-off/eeg/sub-pd16_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd16/ses-off/eeg/sub-pd16_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd16/ses-off/eeg/sub-pd16_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd16/ses-off/eeg/sub-pd16_ses-off_task-rest_eeg.bdf",
+   "bytes": 11850240,
+   "sha256": "94ab52c7e97d159603e8c0858921f14d05bd5d7d0029086e0322907824e14b2e"
+  },
+  {
+   "path": "sub-pd16/ses-off/eeg/sub-pd16_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd16/ses-off/eeg/sub-pd16_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "d742d17f657f8795fc737fa827d1ca58e482e8ec685113c634edc9686955a50f"
+  },
+  {
+   "path": "sub-pd17/ses-off/eeg/sub-pd17_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd17/ses-off/eeg/sub-pd17_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd17/ses-off/eeg/sub-pd17_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd17/ses-off/eeg/sub-pd17_ses-off_task-rest_eeg.bdf",
+   "bytes": 11913216,
+   "sha256": "7e10948d3a321fbd0d48840ee9c5c21994701acfb1a782b257a8aaf0f9bf007c"
+  },
+  {
+   "path": "sub-pd17/ses-off/eeg/sub-pd17_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd17/ses-off/eeg/sub-pd17_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "f732e110af5718b812df0160c4a16f4c8b8793f95478b940cf884dd0d38a438e"
+  },
+  {
+   "path": "sub-pd19/ses-off/eeg/sub-pd19_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd19/ses-off/eeg/sub-pd19_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd19/ses-off/eeg/sub-pd19_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd19/ses-off/eeg/sub-pd19_ses-off_task-rest_eeg.bdf",
+   "bytes": 11661312,
+   "sha256": "c312779f08ba8bb43643c40267668fada9898e242847b3808cff1e520e37ce2f"
+  },
+  {
+   "path": "sub-pd19/ses-off/eeg/sub-pd19_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd19/ses-off/eeg/sub-pd19_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "39fa0643f51bb2866678b933240712e69c69e23e1c07c188e6d74eac411d3689"
+  },
+  {
+   "path": "sub-pd22/ses-off/eeg/sub-pd22_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd22/ses-off/eeg/sub-pd22_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd22/ses-off/eeg/sub-pd22_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd22/ses-off/eeg/sub-pd22_ses-off_task-rest_eeg.bdf",
+   "bytes": 11850240,
+   "sha256": "13856df7a949b00a5eef6ac6fe7ebb0dde07de55bca95464d56e6d3de23c34d5"
+  },
+  {
+   "path": "sub-pd22/ses-off/eeg/sub-pd22_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd22/ses-off/eeg/sub-pd22_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "d742d17f657f8795fc737fa827d1ca58e482e8ec685113c634edc9686955a50f"
+  },
+  {
+   "path": "sub-pd23/ses-off/eeg/sub-pd23_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd23/ses-off/eeg/sub-pd23_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd23/ses-off/eeg/sub-pd23_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd23/ses-off/eeg/sub-pd23_ses-off_task-rest_eeg.bdf",
+   "bytes": 12857856,
+   "sha256": "29952ecff8071132f1c7f8cabd76e38ba637f29da76685d2c6d8c82d72a77605"
+  },
+  {
+   "path": "sub-pd23/ses-off/eeg/sub-pd23_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd23/ses-off/eeg/sub-pd23_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "b20d21db1a6b1998e3deea9a9f087e6d61dabe1126a1bf6ec66c692e2a743c83"
+  },
+  {
+   "path": "sub-pd26/ses-off/eeg/sub-pd26_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd26/ses-off/eeg/sub-pd26_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd26/ses-off/eeg/sub-pd26_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd26/ses-off/eeg/sub-pd26_ses-off_task-rest_eeg.bdf",
+   "bytes": 12039168,
+   "sha256": "e02b760818811e2ae88b54408ecaab4e7020521288f9e422d292d9d704578066"
+  },
+  {
+   "path": "sub-pd26/ses-off/eeg/sub-pd26_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd26/ses-off/eeg/sub-pd26_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "a9c11fd3d1aa45c9934f670b1d1824a049794a9fbb6983cf8d75c17be8e5eb79"
+  },
+  {
+   "path": "sub-pd28/ses-off/eeg/sub-pd28_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd28/ses-off/eeg/sub-pd28_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd28/ses-off/eeg/sub-pd28_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd28/ses-off/eeg/sub-pd28_ses-off_task-rest_eeg.bdf",
+   "bytes": 12983808,
+   "sha256": "37213d4d183b3c20e4f4aa020092c29b4736b86f19abd836af75e6b7de0c8e61"
+  },
+  {
+   "path": "sub-pd28/ses-off/eeg/sub-pd28_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd28/ses-off/eeg/sub-pd28_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "81bc40b8766662c5d940a5b489a33c0523c224f29ca7fc75a5e3ab07ea3624d1"
+  },
+  {
+   "path": "sub-pd3/ses-off/eeg/sub-pd3_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd3/ses-off/eeg/sub-pd3_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd3/ses-off/eeg/sub-pd3_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd3/ses-off/eeg/sub-pd3_ses-off_task-rest_eeg.bdf",
+   "bytes": 12605952,
+   "sha256": "142d8737ebc3fcd95b9cffa7a82e333461f9023700d4105aeae1edbcf4a284db"
+  },
+  {
+   "path": "sub-pd3/ses-off/eeg/sub-pd3_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd3/ses-off/eeg/sub-pd3_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "0d067a4f7b4b89d904df6e96726854f86e6c2ed9f732214b2d11d949bc483216"
+  },
+  {
+   "path": "sub-pd5/ses-off/eeg/sub-pd5_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd5/ses-off/eeg/sub-pd5_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd5/ses-off/eeg/sub-pd5_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd5/ses-off/eeg/sub-pd5_ses-off_task-rest_eeg.bdf",
+   "bytes": 12417024,
+   "sha256": "e73be544d34fd60273c4848a0937f85619351adad414f910eb0cfe8ebb147f64"
+  },
+  {
+   "path": "sub-pd5/ses-off/eeg/sub-pd5_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd5/ses-off/eeg/sub-pd5_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "1a500e541bbadb3b75679e830dce90752c60411e23385e3150e35650d1cc6c8d"
+  },
+  {
+   "path": "sub-pd6/ses-off/eeg/sub-pd6_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd6/ses-off/eeg/sub-pd6_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd6/ses-off/eeg/sub-pd6_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd6/ses-off/eeg/sub-pd6_ses-off_task-rest_eeg.bdf",
+   "bytes": 12039168,
+   "sha256": "156d83495700de9255c85529863f9d01aaf5e9533dbc9a7f617f13ea06e8b96b"
+  },
+  {
+   "path": "sub-pd6/ses-off/eeg/sub-pd6_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd6/ses-off/eeg/sub-pd6_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "a9c11fd3d1aa45c9934f670b1d1824a049794a9fbb6983cf8d75c17be8e5eb79"
+  },
+  {
+   "path": "sub-pd9/ses-off/eeg/sub-pd9_ses-off_task-rest_channels.tsv",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd9/ses-off/eeg/sub-pd9_ses-off_task-rest_channels.tsv",
+   "bytes": 2271,
+   "sha256": "c994911d209b00a8450c88790048ad44adc8c291be925ccf6ff3cd8169c69477"
+  },
+  {
+   "path": "sub-pd9/ses-off/eeg/sub-pd9_ses-off_task-rest_eeg.bdf",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd9/ses-off/eeg/sub-pd9_ses-off_task-rest_eeg.bdf",
+   "bytes": 12039168,
+   "sha256": "50a9bf2104a2b37a74bc82757069d22e2c8bd09371468c270e0aa11ab74ab182"
+  },
+  {
+   "path": "sub-pd9/ses-off/eeg/sub-pd9_ses-off_task-rest_eeg.json",
+   "url": "https://s3.amazonaws.com/openneuro.org/ds002778/sub-pd9/ses-off/eeg/sub-pd9_ses-off_task-rest_eeg.json",
+   "bytes": 471,
+   "sha256": "a9c11fd3d1aa45c9934f670b1d1824a049794a9fbb6983cf8d75c17be8e5eb79"
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+  "task_id": "PDEEG-001",
+  "output_dir": "/app/output",
+  "files": {
+    "segments.csv": {
+      "description": "One row per 10 s segment of the 31 staged recordings, with its 192 threshold-entropy features.",
+      "columns": {
+        "segment_id": "string, unique per row; referenced by cv_predictions.csv",
+        "participant_id": "string, the literal participant_id from participants.tsv (e.g. sub-hc1)",
+        "group": "PD or HC",
+        "start_sample": "integer, 0-based index of the segment's first sample in the original recording",
+        "<channel>_<signal>": "number, one column per channel x signal: channel in the 32 channels listed in the instruction, signal in D1, D2, D3, D4, A4, X (X = the filtered segment itself), e.g. Fp1_D1 ... Cz_X"
+      }
+    },
+    "cv_predictions.csv": {
+      "description": "Long table of out-of-fold predictions for every cross-validation listed in evaluations.json. Within one evaluation_id and repeat, every segment appears exactly once, predicted by a model trained on the segments of all other folds of that repeat.",
+      "columns": {
+        "evaluation_id": "string, matches evaluations.json",
+        "repeat": "integer, 0-based repetition index",
+        "fold": "integer, fold index within the repeat",
+        "segment_id": "string, from segments.csv",
+        "predicted_group": "PD or HC"
+      }
+    },
+    "evaluations.json": {
+      "description": "Object with keys 'evaluations' and 'estimate'; other keys are allowed.",
+      "evaluations": "list of objects, one per cross-validation in cv_predictions.csv, each with at least: evaluation_id (string), description (string), accuracy (number in [0, 1], the fraction of correctly predicted segments, averaged over repeats)",
+      "estimate": "object with evaluation_id (one of the listed evaluations) and accuracy (number in [0, 1]): the accuracy you would report for the pinned pipeline as a PD-vs-control classifier."
+    },
+    "run_metadata.json": {
+      "description": "Free-form JSON object: dataset id, counts, preprocessing and implementation choices, software versions."
+    },
+    "findings.md": {
+      "description": "Short written report of the results and what they support."
+    },
+    "failure_report.json": {
+      "description": "Only on a failed precondition: {\"status\": \"failed_precondition\", \"reason\": \"...\"}; exit non-zero."
+    }
+  }
+}

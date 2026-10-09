@@ -1,0 +1,13 @@
+#!/bin/bash
+set -euo pipefail
+mkdir -p /logs/verifier
+echo 0 > /logs/verifier/reward.txt
+export PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+unset PYTEST_ADDOPTS PYTEST_PLUGINS
+# pytest, pytest-json-ctrf, mne and pywavelets are pinned in the image (environment/Dockerfile);
+# the reference features are recomputed from the staged recordings, so the run is offline.
+if python3 -B -m pytest -p ctrf.main -p no:cacheprovider --rootdir=/tests \
+     --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA
+then echo 1 > /logs/verifier/reward.txt; exit 0
+else te=$?; echo 0 > /logs/verifier/reward.txt; exit $te; fi

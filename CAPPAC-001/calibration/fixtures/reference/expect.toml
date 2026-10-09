@@ -1,0 +1,3 @@
+note = "TODO(author): reference findings.md (copy from the oracle run's /app/output)"
+[expect]
+"*" = "pass"

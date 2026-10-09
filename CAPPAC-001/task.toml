@@ -1,0 +1,36 @@
+version = "1.1"
+instruction_version = "1.0"
+test_version = "1.0"
+
+[metadata]
+task_id = "CAPPAC-001"
+# Metadata is for maintainers; the agent sees only instruction.md. The shipped examples
+# name the trap in the title (e.g. "un-cued motion confound"), which is fine here.
+title = "TODO(author): Reproduce <paper>'s <headline result>: un-cued <lever>"
+category = "Reproduction"            # Reproduction | Connectivity | Activation | Structural | Prediction | EEG
+difficulty = "hard"
+dataset_source = "TODO(author): e.g. OpenNeuro (nilearn-pinned derivatives)"
+dataset_id = "TODO(author): e.g. ds000228"
+source_paper = "TODO(author): Author et al. YEAR, Journal (DOI)"
+
+# Budget from the measured oracle runtime (step0/run.log) with about 2x headroom.
+# Agents take roughly 3x the oracle's time.
+# Measured so far: GRADIENT oracle ~4 min (3000 s), DEVCONN ~6 min (7200 s),
+# SOCIALBRAIN ~35 min with GSR (5400 s).
+[verifier]
+timeout_sec = 3600.0
+
+[agent]
+timeout_sec = 3600.0
+
+[environment]
+build_timeout_sec = 2400.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 16384
+gpus = 0
+allow_internet = true                # data is fetched at runtime; never bake the dataset into the image
+
+[verifier.env]
+
+[solution.env]

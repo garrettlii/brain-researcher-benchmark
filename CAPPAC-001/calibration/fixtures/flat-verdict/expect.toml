@@ -1,0 +1,3 @@
+note = "TODO(author): adversarial: flat face-value verdict, never runs the check"
+[expect]
+TODO_author_judgement_test = "fail"

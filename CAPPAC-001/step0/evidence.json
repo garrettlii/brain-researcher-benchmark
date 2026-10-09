@@ -1,0 +1,75 @@
+{
+  "schema_version": "step0-evidence-v1",
+  "task_id": "CAPPAC-001",
+  "opportunity_id": "adhoc:CAPPAC-001",
+  "_comment": "Step-0 record. EvidenceItem/ArtifactRef shapes follow contracts/curation/curation-contracts-v1.schema.json. Status vocabulary: reported (the paper says it) | verified (a non-computational fact you checked) | measured (your probe produced it: needs >=1 evidence_ref with a matching sha256) | planned | missing. Never label a paper's number as measured. Get refs from `python tools/artifact_ref.py <file>`. This file names the hidden lever, so like solution/ it is author_private for any held-out task.",
+
+  "intake_route": ["TODO(author): advance_to_step0 | needs_data | archive | assess_evolvable (assess_evolvable may accompany advance_to_step0)"],
+  "intake_reason": "TODO(author): primary empirical paper? exact claim/contrast? fixed obtainable substrate? executable method? real measurement as truth?",
+
+  "claim_scope_review": {
+    "status": "planned",
+    "reviewed_on": null,
+    "timing": "TODO(author): pre_probe | retrospective (never backdate an existing task)",
+    "decision": "TODO(author): proceed_paper_aligned | proceed_author_extension | reframe | archive | insufficient_evidence",
+    "reason": "TODO(author): source claim and exact range checked against full text/supplements; authors' existing controls inspected; every adaptation/extension justified before local results",
+    "record_ref": {
+      "artifact_id": "CAPPAC-001:step0_claim_scope.md",
+      "uri": "step0/claim_scope.md",
+      "sha256": "TODO(author): hash the completed pre-probe record using tools/artifact_ref.py",
+      "media_type": "text/markdown",
+      "visibility": "author_private"
+    }
+  },
+
+  "paper": {
+    "paper_id": "TODO(author): DOI",
+    "paper_kind": "primary_empirical",
+    "claim_and_contrast": "TODO(author): the exact claim, in the paper's terms",
+    "target_measurement": "TODO(author): the statistic the task reproduces",
+    "reported_values": [
+      {"field": "TODO(author): e.g. children_age_spearman_across_network", "status": "reported", "value": null, "evidence_refs": []}
+    ]
+  },
+
+  "substrate": {
+    "dataset_id": "TODO(author)",
+    "fetcher": "TODO(author): e.g. nilearn.datasets.fetch_development_fmri()",
+    "version_pin": "TODO(author): e.g. nilearn==0.12.1",
+    "cohort": "TODO(author): e.g. 122 children + 33 adults",
+    "access": "public"
+  },
+
+  "probe": {
+    "script": "step0/probe.py",
+    "command": "python step0/probe.py 2>&1 | tee step0/run.log",
+    "log": "step0/run.log",
+    "outputs": ["step0/outputs/metrics.json", "step0/outputs/pip_freeze.txt"],
+    "ran_on": "TODO(author): YYYY-MM-DD, host, python version"
+  },
+
+  "results": [
+    {"field": "raw_effect", "status": "planned", "value": "TODO(author)", "evidence_refs": []},
+    {"field": "lever_premise", "status": "planned", "value": "TODO(author)", "evidence_refs": []},
+    {"field": "controlled_effect", "status": "planned", "value": "TODO(author)", "evidence_refs": []}
+  ],
+
+  "lever": {
+    "name": "TODO(author): e.g. head motion (mean FD)",
+    "flips_result": null,
+    "variants_tried": ["TODO(author): every variant, including the ones that did NOT flip"],
+    "honesty_notes": ["TODO(author): metrics that were discarded and why (see DEVCONN's long-range-FC note)"]
+  },
+
+  "failure_axis": "TODO(author): over-claim | confident-refutation | wrong-cause | point-estimate | leakage | ...",
+  "critical_path_test": {
+    "question": "Does the stated method, output schema, or a routine evaluation recipe already prescribe or determine the decisive diagnostic?",
+    "answer": "TODO(author): no (judgement beyond routine execution, still necessary for the public question) | yes (easy control)",
+    "rationale": "TODO(author)"
+  },
+  "agent_headroom_hypothesis": "TODO(author): why the declared target models may miss a consequential judgement after the objective is clear; assess routine routes and sufficient alternative reasoning",
+  "cue_terms": ["TODO(author): vocabulary prescribing the volunteered diagnostic; never hide necessary source/method/target information as a forbidden cue"],
+
+  "verdict": "TODO(author): build_hard_candidate | build_easy_control | reframe | archive | insufficient_evidence",
+  "verdict_reason": "TODO(author)"
+}

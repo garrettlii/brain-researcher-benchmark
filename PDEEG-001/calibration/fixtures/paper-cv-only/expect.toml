@@ -1,4 +1,6 @@
 note = "manufactured, targeted failure: only the paper's 10 x 10-fold CV is run and its accuracy is the estimate"
 [expect]
-test_features_and_paper_evaluation = "pass"
+test_features_match_recordings = "pass"
+test_reported_evaluations = "pass"
 test_estimate_comes_from_unseen_participants = "fail"
+test_report_and_metadata = "pass"

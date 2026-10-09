@@ -308,6 +308,29 @@
         "spec_subjects": 0.125
       }
     },
+    "filter_whole_recording_then_segment": {
+      "SEG_10x10fold": [
+        0.9973,
+        0.0062
+      ],
+      "SUBJ_loso": {
+        "segment_acc": 0.4519,
+        "segment_balanced_acc": 0.4542,
+        "subject_vote_acc": 0.4194,
+        "subject_vote_correct": 13,
+        "n_subjects": 31,
+        "subject_vote_ci95_exact": [
+          0.245,
+          0.609
+        ],
+        "sens_subjects": 0.6,
+        "spec_subjects": 0.25
+      },
+      "SUBJ_grouped_10x10fold": [
+        0.4666,
+        0.0215
+      ]
+    },
     "zscored_features": {
       "SEG_10x10fold": [
         0.9917,

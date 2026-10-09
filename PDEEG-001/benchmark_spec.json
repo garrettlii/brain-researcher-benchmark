@@ -6,35 +6,35 @@
   "public_instruction_ref": {
     "artifact_id": "PDEEG-001:instruction.md",
     "uri": "instruction.md",
-    "sha256": "c11c4884f9460a71021f63b5c940f84844a38dee838b7ace662f7bfc72795920",
+    "sha256": "b8863f4681ae01130dde0d193415344fca95597f82db21a6e78ebd9e72fb5ca0",
     "media_type": "text/markdown",
     "visibility": "public"
   },
   "fixed_substrate_ref": {
     "artifact_id": "PDEEG-001:task.toml",
     "uri": "task.toml",
-    "sha256": "3a88c352aac3ebb337a2fd8954c1620d77c6011f75a77dca4295622dc4c32bd2",
+    "sha256": "e2912e69be525fe19551fb2ced3ef5370825326fb8286cb5359d53ad7b9cd35e",
     "media_type": "application/octet-stream",
     "visibility": "public"
   },
   "expected_output_schema_ref": {
     "artifact_id": "PDEEG-001:instruction.md",
     "uri": "instruction.md",
-    "sha256": "c11c4884f9460a71021f63b5c940f84844a38dee838b7ace662f7bfc72795920",
+    "sha256": "b8863f4681ae01130dde0d193415344fca95597f82db21a6e78ebd9e72fb5ca0",
     "media_type": "text/markdown",
     "visibility": "public"
   },
   "oracle_ref": {
     "artifact_id": "PDEEG-001:solution_compute.py",
     "uri": "solution/compute.py",
-    "sha256": "fc7a7b81b294f337da39493202c2362015531d325ef04c5a50f7f2e1a46768f9",
+    "sha256": "ca0100160d1b7b2a85d0675d9d2404ccfe979b4d18d209725e7d0170c9ea3a60",
     "media_type": "text/x-python",
     "visibility": "oracle_private"
   },
   "verifier_ref": {
     "artifact_id": "PDEEG-001:tests_test_outputs.py",
     "uri": "tests/test_outputs.py",
-    "sha256": "7ef95ecbaaafd4a1d2d1ab9f539102b91f07c2ea97c4cfdce41946a543b0ed37",
+    "sha256": "c48ebce460f30577f28ec2dbe2aef8725d9edf1dc826c59677af40e90b10c9b7",
     "media_type": "text/x-python",
     "visibility": "oracle_private"
   },
@@ -42,14 +42,14 @@
     {
       "artifact_id": "PDEEG-001:instruction.md",
       "uri": "instruction.md",
-      "sha256": "c11c4884f9460a71021f63b5c940f84844a38dee838b7ace662f7bfc72795920",
+      "sha256": "b8863f4681ae01130dde0d193415344fca95597f82db21a6e78ebd9e72fb5ca0",
       "media_type": "text/markdown",
       "visibility": "public"
     },
     {
       "artifact_id": "PDEEG-001:task.toml",
       "uri": "task.toml",
-      "sha256": "3a88c352aac3ebb337a2fd8954c1620d77c6011f75a77dca4295622dc4c32bd2",
+      "sha256": "e2912e69be525fe19551fb2ced3ef5370825326fb8286cb5359d53ad7b9cd35e",
       "media_type": "application/octet-stream",
       "visibility": "public"
     },
@@ -70,7 +70,7 @@
     {
       "artifact_id": "PDEEG-001:solution_compute.py",
       "uri": "solution/compute.py",
-      "sha256": "fc7a7b81b294f337da39493202c2362015531d325ef04c5a50f7f2e1a46768f9",
+      "sha256": "ca0100160d1b7b2a85d0675d9d2404ccfe979b4d18d209725e7d0170c9ea3a60",
       "media_type": "text/x-python",
       "visibility": "oracle_private"
     },
@@ -84,21 +84,21 @@
     {
       "artifact_id": "PDEEG-001:tests_test_outputs.py",
       "uri": "tests/test_outputs.py",
-      "sha256": "7ef95ecbaaafd4a1d2d1ab9f539102b91f07c2ea97c4cfdce41946a543b0ed37",
+      "sha256": "c48ebce460f30577f28ec2dbe2aef8725d9edf1dc826c59677af40e90b10c9b7",
       "media_type": "text/x-python",
       "visibility": "oracle_private"
     },
     {
       "artifact_id": "PDEEG-001:proposal.md",
       "uri": "proposal.md",
-      "sha256": "887257db88346575bfdc49578824fcc9f45695f37ab87ff9273c187ea5e2056e",
+      "sha256": "860c7b780302444e900f475c62f59e44b3bd02d877987b2f4b0fef9b5038b206",
       "media_type": "text/markdown",
       "visibility": "author_private"
     },
     {
       "artifact_id": "PDEEG-001:step0_evidence.json",
       "uri": "step0/evidence.json",
-      "sha256": "a6dd2240d68512c882c76a96d55922ecde3ccdf7f1b72210c8b830486661795d",
+      "sha256": "ea3cdb384ee1d0d48de494d344514f7c299f93dc722bcf4c2d9a2c6c50d08bd7",
       "media_type": "application/json",
       "visibility": "author_private"
     }
@@ -106,14 +106,14 @@
   "private_failure_axis_ref": {
     "artifact_id": "PDEEG-001:step0_evidence.json",
     "uri": "step0/evidence.json",
-    "sha256": "a6dd2240d68512c882c76a96d55922ecde3ccdf7f1b72210c8b830486661795d",
+    "sha256": "ea3cdb384ee1d0d48de494d344514f7c299f93dc722bcf4c2d9a2c6c50d08bd7",
     "media_type": "application/json",
     "visibility": "author_private"
   },
   "private_hidden_lever_ref": {
     "artifact_id": "PDEEG-001:step0_evidence.json",
     "uri": "step0/evidence.json",
-    "sha256": "a6dd2240d68512c882c76a96d55922ecde3ccdf7f1b72210c8b830486661795d",
+    "sha256": "ea3cdb384ee1d0d48de494d344514f7c299f93dc722bcf4c2d9a2c6c50d08bd7",
     "media_type": "application/json",
     "visibility": "author_private"
   },
@@ -128,7 +128,7 @@
   "step0_evidence_ref": {
     "artifact_id": "PDEEG-001:step0_evidence.json",
     "uri": "step0/evidence.json",
-    "sha256": "a6dd2240d68512c882c76a96d55922ecde3ccdf7f1b72210c8b830486661795d",
+    "sha256": "ea3cdb384ee1d0d48de494d344514f7c299f93dc722bcf4c2d9a2c6c50d08bd7",
     "media_type": "application/json",
     "visibility": "author_private"
   },

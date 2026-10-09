@@ -1,34 +1,34 @@
-    2s sub-hc1 19 segments
-    3s sub-hc2 19 segments
-    5s sub-hc4 18 segments
-    6s sub-hc7 19 segments
-    8s sub-hc8 19 segments
-    9s sub-hc10 20 segments
-   11s sub-hc18 18 segments
-   12s sub-hc20 18 segments
-   14s sub-hc21 18 segments
-   15s sub-hc24 19 segments
-   17s sub-hc25 20 segments
-   18s sub-hc29 19 segments
-   20s sub-hc30 18 segments
-   21s sub-hc31 18 segments
-   23s sub-hc32 19 segments
-   24s sub-hc33 19 segments
-   26s sub-pd3 20 segments
-   28s sub-pd5 19 segments
-   29s sub-pd6 19 segments
-   31s sub-pd9 19 segments
-   32s sub-pd12 20 segments
-   34s sub-pd11 18 segments
-   35s sub-pd13 18 segments
-   38s sub-pd14 29 segments
-   39s sub-pd16 18 segments
-   41s sub-pd17 18 segments
-   42s sub-pd19 18 segments
-   44s sub-pd22 18 segments
-   45s sub-pd23 20 segments
-   47s sub-pd26 19 segments
-   48s sub-pd28 20 segments
+    3s sub-hc1 19 segments
+    6s sub-hc2 19 segments
+    9s sub-hc4 18 segments
+   12s sub-hc7 19 segments
+   14s sub-hc8 19 segments
+   17s sub-hc10 20 segments
+   20s sub-hc18 18 segments
+   23s sub-hc20 18 segments
+   26s sub-hc21 18 segments
+   29s sub-hc24 19 segments
+   32s sub-hc25 20 segments
+   35s sub-hc29 19 segments
+   38s sub-hc30 18 segments
+   40s sub-hc31 18 segments
+   43s sub-hc32 19 segments
+   46s sub-hc33 19 segments
+   50s sub-pd3 20 segments
+   53s sub-pd5 19 segments
+   57s sub-pd6 19 segments
+   60s sub-pd9 19 segments
+   63s sub-pd12 20 segments
+   66s sub-pd11 18 segments
+   69s sub-pd13 18 segments
+   74s sub-pd14 29 segments
+   78s sub-pd16 18 segments
+   81s sub-pd17 18 segments
+   84s sub-pd19 18 segments
+   87s sub-pd22 18 segments
+   91s sub-pd23 20 segments
+   94s sub-pd26 19 segments
+   98s sub-pd28 20 segments
 segments: PD 293, HC 300; subjects 31
 LogEn {"SEG_10x10fold_acc_mean_sd_over_folds": [0.9971, 0.0064], "SUBJ_loso": {"segment_acc": 0.398, "segment_balanced_acc": 0.4006, "subject_vote_acc": 0.3548, "subject_vote_correct": 11, "n_subjects": 31, "subject_vote_ci95_exact": [0.192, 0.546], "sens_subjects": 0.667, "spec_subjects": 0.062}, "SUBJ_grouped_10x10fold_acc_mean_sd_over_repeats": [0.4238, 0.0143]}
 ThEn {"SEG_10x10fold_acc_mean_sd_over_folds": [0.9973, 0.0062], "SUBJ_loso": {"segment_acc": 0.4536, "segment_balanced_acc": 0.4559, "subject_vote_acc": 0.4194, "subject_vote_correct": 13, "n_subjects": 31, "subject_vote_ci95_exact": [0.245, 0.609], "sens_subjects": 0.6, "spec_subjects": 0.25}, "SUBJ_grouped_10x10fold_acc_mean_sd_over_repeats": [0.4696, 0.022]}
@@ -162,6 +162,29 @@ TShEn {"SEG_10x10fold_acc_mean_sd_over_folds": [0.9595, 0.0218], "SUBJ_loso": {"
         "spec_subjects": 0.125
       }
     },
+    "filter_whole_recording_then_segment": {
+      "SEG_10x10fold": [
+        0.9973,
+        0.0062
+      ],
+      "SUBJ_loso": {
+        "segment_acc": 0.4519,
+        "segment_balanced_acc": 0.4542,
+        "subject_vote_acc": 0.4194,
+        "subject_vote_correct": 13,
+        "n_subjects": 31,
+        "subject_vote_ci95_exact": [
+          0.245,
+          0.609
+        ],
+        "sens_subjects": 0.6,
+        "spec_subjects": 0.25
+      },
+      "SUBJ_grouped_10x10fold": [
+        0.4666,
+        0.0215
+      ]
+    },
     "zscored_features": {
       "SEG_10x10fold": [
         0.9917,
@@ -183,4 +206,4 @@ TShEn {"SEG_10x10fold_acc_mean_sd_over_folds": [0.9595, 0.0218], "SUBJ_loso": {"
     }
   }
 }
-total 101s
+total 262s

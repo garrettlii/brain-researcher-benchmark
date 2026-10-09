@@ -1,0 +1,6 @@
+note = "manufactured (review finding 1): Fp1_D1 replaced by 5000 for PD and 0 for HC; every evaluation recomputed on the manipulated table (held-out accuracy 100%)"
+[expect]
+test_features_match_recordings = "fail"
+test_reported_evaluations = "pass"
+test_estimate_comes_from_unseen_participants = "fail"
+test_report_and_metadata = "pass"

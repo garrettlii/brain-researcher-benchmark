@@ -1,0 +1,3 @@
+note = "manufactured: features from MNE filter_data (IIR Butterworth sos, zero phase) instead of scipy sosfiltfilt; every evaluation recomputed with scikit-learn on those features"
+[expect]
+"*" = "pass"

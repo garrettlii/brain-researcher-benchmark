@@ -1,0 +1,6 @@
+note = "manufactured (review finding 6): one stratified 10-fold partition copied as all 10 repeats"
+[expect]
+test_features_match_recordings = "pass"
+test_reported_evaluations = "fail"
+test_estimate_comes_from_unseen_participants = "pass"
+test_report_and_metadata = "pass"

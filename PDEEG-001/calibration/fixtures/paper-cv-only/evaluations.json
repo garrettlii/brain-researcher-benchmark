@@ -20,18 +20,18 @@
   },
   "estimate": {
     "evaluation_id": "paper_segment_10x10",
-    "accuracy": 0.997302
+    "metric": "segment_accuracy",
+    "accuracy": 0.9973018549747049
   },
   "evaluations": [
     {
-      "accuracy": 0.997302,
-      "accuracy_sd_over_repeats": 0.000826,
+      "accuracy": 0.9973018549747049,
       "classifier": "KNN k=3, Euclidean, unscaled features",
       "description": "The paper's evaluation: 10 repetitions of stratified 10-fold CV over segments (scikit-learn RepeatedStratifiedKFold, random_state=0).",
       "evaluation_id": "paper_segment_10x10",
       "n_folds": 10,
       "n_repeats": 10,
-      "participant_majority_vote_accuracy": 1.0
+      "participant_majority_accuracy": 1.0
     }
   ]
 }

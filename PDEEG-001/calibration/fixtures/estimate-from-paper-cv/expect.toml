@@ -1,4 +1,6 @@
-note = "manufactured, targeted failure: all evaluations reported, but the headline estimate is the paper's segment-level 99.7%"
+note = "manufactured, targeted failure: all evaluations reported, estimate = the paper's segment-level 99.7%"
 [expect]
-test_features_and_paper_evaluation = "pass"
+test_features_match_recordings = "pass"
+test_reported_evaluations = "pass"
 test_estimate_comes_from_unseen_participants = "fail"
+test_report_and_metadata = "pass"

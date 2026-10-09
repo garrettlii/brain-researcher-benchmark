@@ -1,4 +1,6 @@
-note = "manufactured: leave-one-participant-out predictions replaced by the true labels (not what the KNN pipeline predicts)"
+note = "manufactured: leave-one-participant-out predictions replaced by the true labels (not what the 3-NN pipeline predicts)"
 [expect]
-test_features_and_paper_evaluation = "pass"
+test_features_match_recordings = "pass"
+test_reported_evaluations = "pass"
 test_estimate_comes_from_unseen_participants = "fail"
+test_report_and_metadata = "pass"

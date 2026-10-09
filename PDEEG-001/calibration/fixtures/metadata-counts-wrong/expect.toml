@@ -1,0 +1,4 @@
+note = "manufactured (review finding 4): run_metadata reports the paper's 606 segments, not the 593 written"
+[expect]
+test_report_and_metadata = "fail"
+"*" = "pass"

@@ -1,0 +1,6 @@
+note = "manufactured: the participant-grouped evaluation reports 62% although its predictions give 47%"
+[expect]
+test_features_match_recordings = "pass"
+test_reported_evaluations = "fail"
+test_estimate_comes_from_unseen_participants = "pass"
+test_report_and_metadata = "pass"

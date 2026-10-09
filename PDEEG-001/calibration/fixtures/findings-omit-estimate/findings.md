@@ -1,0 +1,3 @@
+# Findings
+
+The pipeline was run as described in the instruction and the outputs are in this directory. The pipeline was run as described in the instruction and the outputs are in this directory. The pipeline was run as described in the instruction and the outputs are in this directory. The pipeline was run as described in the instruction and the outputs are in this directory. The pipeline was run as described in the instruction and the outputs are in this directory. The pipeline was run as described in the instruction and the outputs are in this directory. 

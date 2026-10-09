@@ -1,9 +1,12 @@
 # DS002778_DIR=<staged ds002778> python authoring/feature_tolerance.py   (2026-10-08, venv = step0/outputs/pip_freeze.txt)
-stated (waverec, zeroed coefficients)    within band 1.0000  max |diff| 3
-per-segment demean                       within band 1.0000  max |diff| 3
-filtfilt(b, a)                           within band 1.0000  max |diff| 141
-filter whole recording, then segment     within band 0.9802  max |diff| 122
-no re-reference                          within band 0.5963  max |diff| 1501
-causal filter (sosfilt)                  within band 0.6514  max |diff| 2906
-periodic extension                       within band 0.8338  max |diff| 374
-threshold 0.1                            within band 0.4248  max |diff| 2097
+stated (waverec, zeroed coefficients)      band all 1.0000 col-min 1.0000 seg-min 1.0000 max|d|     3 | paper agree 1.0000 dacc +0.0000 | lopo agree 0.9966 dacc +0.0000
+per-segment demean                         band all 1.0000 col-min 1.0000 seg-min 1.0000 max|d|     3 | paper agree 1.0000 dacc +0.0000 | lopo agree 0.9966 dacc +0.0000
+filtfilt(b, a)                             band all 1.0000 col-min 0.9983 seg-min 0.9948 max|d|   141 | paper agree 1.0000 dacc +0.0000 | lopo agree 0.9949 dacc +0.0017
+MNE filter_data (IIR sos, zero phase)      band all 0.9999 col-min 0.9983 seg-min 0.9844 max|d|   125 | paper agree 1.0000 dacc +0.0000 | lopo agree 0.9933 dacc -0.0034
+filter whole recording, then segment       band all 0.9802 col-min 0.8297 seg-min 0.9010 max|d|   122 | paper agree 1.0000 dacc +0.0000 | lopo agree 0.9916 dacc -0.0017
+no re-reference                            band all 0.5963 col-min 0.0000 seg-min 0.4115 max|d|  1501 | paper agree 0.9968 dacc -0.0022 | lopo agree 0.7707 dacc +0.0270
+causal filter (sosfilt)                    band all 0.6514 col-min 0.0000 seg-min 0.5052 max|d|  2906 | paper agree 0.9953 dacc -0.0003 | lopo agree 0.7521 dacc -0.0759
+periodic extension                         band all 0.8338 col-min 0.5042 seg-min 0.6146 max|d|   374 | paper agree 0.9998 dacc +0.0002 | lopo agree 0.9511 dacc -0.0118
+threshold 0.1                              band all 0.4248 col-min 0.0000 seg-min 0.1771 max|d|  2097 | paper agree 0.9980 dacc -0.0003 | lopo agree 0.8212 dacc -0.0472
+manipulated: Fp1_D1 encodes diagnosis      band all 0.9974 col-min 0.5008 seg-min 0.9948 max|d|  5000 | paper agree 0.9973 dacc +0.0027 | lopo agree 0.4536 dacc +0.5464
+manipulated: all columns +/-4 by diagnosis band all 1.0000 col-min 1.0000 seg-min 1.0000 max|d|     4 | paper agree 0.9998 dacc +0.0002 | lopo agree 0.9865 dacc +0.0101

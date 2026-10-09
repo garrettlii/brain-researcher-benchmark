@@ -20,43 +20,36 @@
   },
   "estimate": {
     "evaluation_id": "leave_one_participant_out",
+    "metric": "segment_accuracy",
     "accuracy": 1.0
   },
   "evaluations": [
     {
-      "accuracy": 0.997302,
-      "accuracy_sd_over_repeats": 0.000826,
+      "accuracy": 0.9973018549747049,
       "classifier": "KNN k=3, Euclidean, unscaled features",
       "description": "The paper's evaluation: 10 repetitions of stratified 10-fold CV over segments (scikit-learn RepeatedStratifiedKFold, random_state=0).",
       "evaluation_id": "paper_segment_10x10",
       "n_folds": 10,
       "n_repeats": 10,
-      "participant_majority_vote_accuracy": 1.0
+      "participant_majority_accuracy": 1.0
     },
     {
       "accuracy": 1.0,
-      "accuracy_sd_over_repeats": 0.0,
       "classifier": "KNN k=3, Euclidean, unscaled features",
       "description": "Each participant's segments form one test fold; the model never sees the test participant during training.",
       "evaluation_id": "leave_one_participant_out",
       "n_folds": 31,
       "n_repeats": 1,
-      "participant_majority_vote_accuracy": 0.419355,
-      "participant_majority_vote_ci95_exact": [
-        0.2455,
-        0.6092
-      ],
-      "participant_majority_vote_correct": "13/31"
+      "participant_majority_accuracy": 1.0
     },
     {
-      "accuracy": 0.469646,
-      "accuracy_sd_over_repeats": 0.022029,
+      "accuracy": 0.46964586846543,
       "classifier": "KNN k=3, Euclidean, unscaled features",
       "description": "10 repetitions of stratified 10-fold CV with all segments of a participant in the same fold (StratifiedGroupKFold, random_state=0..9).",
       "evaluation_id": "participant_grouped_10x10",
       "n_folds": 10,
       "n_repeats": 10,
-      "participant_majority_vote_accuracy": 0.454839
+      "participant_majority_accuracy": 0.4516129032258064
     }
   ]
 }

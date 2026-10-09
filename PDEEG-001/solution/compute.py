@@ -129,6 +129,17 @@ def cv_run(X, y, splits):
     return fold, pred
 
 
+def vote_accuracy(pred, truth, groups):
+    """Per-participant majority vote: PD if more than half of the participant's segments are
+    predicted PD, HC if fewer than half; an exact tie counts as an error."""
+    correct = []
+    for s in np.unique(groups):
+        share = (pred[groups == s] == "PD").mean()
+        vote = "PD" if share > 0.5 else "HC" if share < 0.5 else None
+        correct.append(vote == truth[groups == s][0])
+    return float(np.mean(correct))
+
+
 def cp(k, n):
     lo = stats.beta.ppf(0.025, k, n - k + 1) if k > 0 else 0.0
     hi = stats.beta.ppf(0.975, k + 1, n - k) if k < n else 1.0
@@ -166,21 +177,20 @@ def main():
         for r, splits in enumerate(reps):
             fold, pred = cv_run(X, y, splits)
             accs.append(float((pred == y).mean()))
-            v = np.array(["PD" if (pred[g == s] == "PD").mean() >= 0.5 else "HC" for s in subs])
-            votes.append(float((v == ysub).mean()))
+            votes.append(vote_accuracy(pred, y, g))
             pred_rows.append(pd.DataFrame({"evaluation_id": eid, "repeat": r, "fold": fold,
                                            "segment_id": seg.segment_id, "predicted_group": pred}))
         e = {"evaluation_id": eid, "description": desc[eid], "n_repeats": len(reps), "n_folds": len(reps[0]),
              "classifier": "KNN k=3, Euclidean, unscaled features",
              "accuracy": round(float(np.mean(accs)), 6),
              "accuracy_sd_over_repeats": round(float(np.std(accs)), 6),
-             "participant_majority_vote_accuracy": round(float(np.mean(votes)), 6)}
+             "participant_majority_accuracy": round(float(np.mean(votes)), 6)}
         if eid == "leave_one_participant_out":
             k = int(round(votes[0] * len(subs)))
-            e["participant_majority_vote_correct"] = f"{k}/{len(subs)}"
-            e["participant_majority_vote_ci95_exact"] = cp(k, len(subs))
+            e["participant_majority_correct"] = f"{k}/{len(subs)}"
+            e["participant_majority_ci95_exact"] = cp(k, len(subs))
         evals.append(e)
-        print(f"{time.time() - t0:5.0f}s {eid}: acc {e['accuracy']:.4f} vote {e['participant_majority_vote_accuracy']:.4f}",
+        print(f"{time.time() - t0:5.0f}s {eid}: acc {e['accuracy']:.4f} vote {e['participant_majority_accuracy']:.4f}",
               flush=True)
 
     # participant-level label permutation for leave-one-participant-out
@@ -210,8 +220,7 @@ def main():
              "chance_31way": round(1 / len(subs), 4)}
 
     loso = evals[1]
-    est = {"evaluation_id": "leave_one_participant_out", "accuracy": loso["accuracy"],
-           "basis": "segment accuracy on participants held out of training"}
+    est = {"evaluation_id": "leave_one_participant_out", "metric": "segment_accuracy", "accuracy": loso["accuracy"]}
     seg.join(pd.DataFrame(X, columns=FEATURES)).to_csv(OUT / "segments.csv", index=False)
     pd.concat(pred_rows).to_csv(OUT / "cv_predictions.csv", index=False)
     wj("evaluations.json", {"evaluations": evals, "estimate": est,
@@ -227,7 +236,8 @@ def main():
         "recording_samples": n_samples, "sampling_rate_hz": FS, "segment_seconds": SEG_S,
         "channels": CHANNELS, "units": "microvolt",
         "preprocessing": ["channel mean over the recording removed", "average reference over the 32 channels",
-                          "per segment: 5th-order Butterworth 0.5-32 Hz, second-order sections, scipy sosfiltfilt",
+                          "per 10 s segment (the paper's Methods/Results order; its overview filters first): "
+                          "5th-order Butterworth 0.5-32 Hz, second-order sections, scipy sosfiltfilt",
                           "db4 4-level DWT (symmetric extension); D1-D4 and A4 reconstructed separately, plus "
                           "the filtered segment (X)",
                           "threshold entropy: count of samples with |x| > 0.2 uV"],
@@ -237,24 +247,24 @@ def main():
         "runtime_seconds": round(time.time() - t0, 1)})
     paper = evals[0]
     grp = evals[2]
-    lo, hi = loso["participant_majority_vote_ci95_exact"]
+    lo, hi = loso["participant_majority_ci95_exact"]
     (OUT / "findings.md").write_text(f"""# Threshold-entropy PD classification on ds002778 (off medication vs controls)
 
 **The paper's number reproduces, but it does not measure PD detection.** With the pinned
 pipeline and the paper's 10 x 10-fold cross-validation over segments, KNN accuracy is
 {paper['accuracy']:.1%} (paper: 99.72%). When the participant being classified is held out of
 training, the same pipeline is at chance: leave-one-participant-out {loso['accuracy']:.1%} of
-segments, {loso['participant_majority_vote_correct']} participants correct by majority vote
+segments, {loso['participant_majority_correct']} participants correct by majority vote
 (exact 95% CI {lo:.2f}-{hi:.2f}), participant-grouped 10 x 10-fold {grp['accuracy']:.1%}.
 A participant-level label permutation gives p = {perm['p']} (null mean {perm['null_mean']:.1%}).
 The accuracy I would report for this pipeline as a PD-vs-control classifier is the held-out-
-participant figure, about {loso['accuracy']:.0%}: no better than chance on these 31 people.
+participant segment accuracy, {loso['accuracy']:.1%}: no better than chance on these 31 people.
 
 ## Why the segment-level number is high
 
 The paper's folds are drawn over the {len(y)} segments, so each test segment has about 16
-segments from the same recording in the training set, and the 3 nearest neighbours are
-almost always that person's own segments. The features fingerprint individuals:
+segments from the same recording in the training set. The features fingerprint
+individuals:
 
 - 31-way participant identification from a single segment:
   {ident['participant_identification_31way_segment_10fold_accuracy']:.1%} (chance {ident['chance_31way']:.1%}).
@@ -271,10 +281,14 @@ features recognise a person seen in training, not that they carry a PD signature
   {lo:.0%}-{hi:.0%}, so a modest real effect (e.g. 60% accuracy) cannot be excluded. What is
   excluded is anything near the reported 99.7%.
 - This tests one feature (threshold entropy) and one classifier as pinned. In Step-0 runs
-  every entropy variant in the paper behaved the same way (99%+ segment-level, chance
-  held-out); other classifiers or feature selection were not explored here.
-- Segment counts differ slightly from the paper (593 vs 606) because some recordings are
-  shorter than 10 x 20 s; this does not affect the comparison.
+  the other seven metrics from the paper gave 78.7-99.7% under segment-level CV and
+  39.0-53.3% with participants held out; other classifiers or feature selection were not
+  explored here.
+- Filtering each segment follows the paper's Methods and Results; its pipeline overview
+  filters the recording before segmenting. In Step 0 that order gave the same picture
+  (99.7% segment-level, 45.2% held-out).
+- Segment counts differ slightly from the paper (593 vs 606); the paper does not say which
+  segments it kept or rejected.
 - Off-medication only; the on-medication sessions were not analysed.
 """, encoding="utf-8")
     print(f"done {time.time() - t0:.0f}s", flush=True)

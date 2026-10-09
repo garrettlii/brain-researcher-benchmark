@@ -1,0 +1,6 @@
+note = "manufactured: estimate is the segment accuracy but labelled participant_majority_accuracy"
+[expect]
+test_features_match_recordings = "pass"
+test_reported_evaluations = "pass"
+test_estimate_comes_from_unseen_participants = "fail"
+test_report_and_metadata = "pass"

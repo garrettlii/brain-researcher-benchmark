@@ -19,6 +19,9 @@ the same person in training. Measured here:
   BAND     alternative explanation 2, non-neural recording cues: features from the
            0-32 Hz sub-bands (cA4, cD4) vs the 32-256 Hz sub-bands (cD1-cD3, above the
            paper's own low-pass); 60 Hz line-noise ratio by group
+Filter order: the paper's Methods and Results sections filter each 10 s segment, its pipeline
+overview filters before segmenting. The probe follows the Methods (per segment) and also
+reports the other order as a variant (variants_primary.filter_whole_recording_then_segment).
 Entropies follow MATLAB's legacy wentropy definitions applied to signal values in uV
 (threshold 0.2, sure 3, norm p=1.1), which match the paper's Eqs. 3-7 and parameters.
 
@@ -92,6 +95,7 @@ recs += [(s, 1, f"{s}/ses-off/eeg/{s}_ses-off_task-rest_eeg.bdf") for s in part.
 t0 = time.time()
 feats = {k: [] for k in list(METRICS) + ["TShEn"]}
 feats_causal = []
+feats_whole = []                                                     # filter the recording, then segment
 y, g, line = [], [], []
 for s, lab, f in recs:
     raw = mne.io.read_raw_bdf(DATA / f, preload=True)
@@ -102,6 +106,7 @@ for s, lab, f in recs:
     line.append({"subject": s, "group": lab, "line60_ratio": float(np.median(P[:, (fr >= 59) & (fr <= 61)].mean(1)
                                                                              / P[:, ((fr >= 55) & (fr < 58)) | ((fr > 62) & (fr <= 65))].mean(1))),
                  "pow_64_128": float(np.log(P[:, (fr >= 64) & (fr <= 128)].mean())), "n_seg": int(x.shape[1] // (SEG * FS))})
+    xf = signal.sosfiltfilt(SOS, x, axis=1)
     for k in range(x.shape[1] // (SEG * FS)):
         seg = x[:, k * SEG * FS:(k + 1) * SEG * FS]
         sf = signal.sosfiltfilt(SOS, seg, axis=1)
@@ -111,12 +116,15 @@ for s, lab, f in recs:
         feats["TShEn"].append(tshen(B))
         Bc = np.stack([subbands(ch) for ch in signal.sosfilt(SOS, seg, axis=1)])
         feats_causal.append(METRICS["ThEn"](Bc))
+        Bw = np.stack([subbands(ch) for ch in xf[:, k * SEG * FS:(k + 1) * SEG * FS]])
+        feats_whole.append(METRICS["ThEn"](Bw))
         y.append(lab); g.append(s)
     print(f"{time.time() - t0:5.0f}s {s} {line[-1]['n_seg']} segments", flush=True)
 
 y, g = np.array(y), np.array(g)
 F = {m: np.array(v) for m, v in feats.items()}                       # n x 32 x 6
 F_causal = np.array(feats_causal)
+F_whole = np.array(feats_whole)
 subs = np.unique(g)
 ysub = np.array([y[g == s][0] for s in subs])
 print(f"segments: PD {int((y == 1).sum())}, HC {int((y == 0).sum())}; subjects {len(subs)}", flush=True)
@@ -227,6 +235,9 @@ metrics["BAND"]["log_power_64_128Hz_by_group"] = {"HC": float(ld[ld.group == 0].
 # pipeline variants on the primary feature
 metrics["variants_primary"] = {
     "causal_filter_sosfilt": {"SEG_10x10fold": [round(v, 4) for v in seg_folds(flat(F_causal), y)], "SUBJ_loso": loso(flat(F_causal), y)},
+    "filter_whole_recording_then_segment": {"SEG_10x10fold": [round(v, 4) for v in seg_folds(flat(F_whole), y)],
+                                            "SUBJ_loso": loso(flat(F_whole), y),
+                                            "SUBJ_grouped_10x10fold": [round(v, 4) for v in group_cv(flat(F_whole), y)]},
     "zscored_features": {"SEG_10x10fold": None, "SUBJ_loso": loso(X, y, model=lambda: make_pipeline(StandardScaler(), knn()))},
 }
 a = [(make_pipeline(StandardScaler(), knn()).fit(X[tr], y[tr]).predict(X[te]) == y[te]).mean()

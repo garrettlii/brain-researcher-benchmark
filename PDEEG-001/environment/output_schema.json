@@ -9,11 +9,11 @@
         "participant_id": "string, the literal participant_id from participants.tsv (e.g. sub-hc1)",
         "group": "PD or HC",
         "start_sample": "integer, 0-based index of the segment's first sample in the original recording",
-        "<channel>_<signal>": "number, one column per channel x signal: channel in the 32 channels listed in the instruction, signal in D1, D2, D3, D4, A4, X (X = the filtered segment itself), e.g. Fp1_D1 ... Cz_X"
+        "<channel>_<signal>": "integer count of samples (0-5120), one column per channel x signal: channel in the 32 channels listed in the instruction, signal in D1, D2, D3, D4, A4, X (X = the filtered segment itself), e.g. Fp1_D1 ... Cz_X"
       }
     },
     "cv_predictions.csv": {
-      "description": "Long table of out-of-fold predictions for every cross-validation listed in evaluations.json. Within one evaluation_id and repeat, every segment appears exactly once, predicted by a model trained on the segments of all other folds of that repeat.",
+      "description": "Long table of out-of-fold predictions for every cross-validation listed in evaluations.json. Within one evaluation_id and repeat, every segment appears exactly once, in one of at least two folds, predicted by a model trained on the segments of all other folds of that repeat.",
       "columns": {
         "evaluation_id": "string, matches evaluations.json",
         "repeat": "integer, 0-based repetition index",
@@ -24,14 +24,15 @@
     },
     "evaluations.json": {
       "description": "Object with keys 'evaluations' and 'estimate'; other keys are allowed.",
-      "evaluations": "list of objects, one per cross-validation in cv_predictions.csv, each with at least: evaluation_id (string), description (string), accuracy (number in [0, 1], the fraction of correctly predicted segments, averaged over repeats)",
-      "estimate": "object with evaluation_id (one of the listed evaluations) and accuracy (number in [0, 1]): the accuracy you would report for the pinned pipeline as a PD-vs-control classifier."
+      "evaluations": "list of objects, one per evaluation_id in cv_predictions.csv, each with at least: evaluation_id (string), description (string), accuracy (number in [0, 1]: the fraction of segments predicted correctly, averaged over repeats). Optional: participant_majority_accuracy (number in [0, 1], averaged over repeats).",
+      "estimate": "object with evaluation_id (one of the listed evaluations), metric ('segment_accuracy' or 'participant_majority_accuracy') and accuracy (number in [0, 1], that metric's value for that evaluation): the accuracy you would report for the pinned pipeline as a PD-vs-control classifier.",
+      "participant_majority_accuracy": "per repeat, each participant is assigned PD if more than half of their segments are predicted PD and HC if fewer than half; an exact tie counts as an error. The value is the fraction of participants assigned correctly, averaged over repeats."
     },
     "run_metadata.json": {
-      "description": "Free-form JSON object: dataset id, counts, preprocessing and implementation choices, software versions."
+      "description": "JSON object with at least: dataset_id ('ds002778'), n_participants (integer), n_segments (integer, rows in segments.csv), preprocessing (non-empty: the preprocessing and implementation choices you made), versions (non-empty object: software and versions used). Other keys are allowed."
     },
     "findings.md": {
-      "description": "Short written report of the results and what they support."
+      "description": "Short written report of the results, including the estimate's value, and what they support."
     },
     "failure_report.json": {
       "description": "Only on a failed precondition: {\"status\": \"failed_precondition\", \"reason\": \"...\"}; exit non-zero."

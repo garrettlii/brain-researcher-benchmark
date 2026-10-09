@@ -1,0 +1,5 @@
+note = "manufactured (review finding 4): run_metadata.json deleted"
+remove = ["run_metadata.json"]
+[expect]
+test_report_and_metadata = "fail"
+"*" = "pass"

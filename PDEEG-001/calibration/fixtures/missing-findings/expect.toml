@@ -1,0 +1,5 @@
+note = "manufactured (review finding 4): findings.md deleted"
+remove = ["findings.md"]
+[expect]
+test_report_and_metadata = "fail"
+"*" = "pass"

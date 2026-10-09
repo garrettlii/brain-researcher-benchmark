@@ -14,8 +14,9 @@ dataset_source = "OpenNeuro ds002778 (CC0): 31 resting recordings (16 HC, 15 PD 
 dataset_id = "ds002778"
 source_paper = "Aljalal et al. 2022, Scientific Reports 12:22547 (10.1038/s41598-022-26644-7)"
 
-# Oracle: 130 s locally (Apple M-series, 1 process; feature extraction ~20 s, 1000-draw
-# permutation ~100 s). Verifier: ~15 s (recomputes reference features from the recordings).
+# Reference solution: 129 s locally (Apple M-series, 1 process; feature extraction ~20 s,
+# 1000-draw permutation ~100 s). Verifier: ~25 s locally (recomputes the reference features
+# from the recordings and replays each evaluation twice). Neither has run in the container yet.
 [verifier]
 timeout_sec = 1200.0
 

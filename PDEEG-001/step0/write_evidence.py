@@ -13,6 +13,7 @@ MU, LOGU1, LOGU2 = R("step0/outputs/metrics_unm.json"), R("step0/run_unm.log"), 
 SHA, CONS = R("step0/outputs/unm_d002_sha256.tsv"), R("step0/outputs/unm_run1_run2_consistency.json")
 bf = m["by_feature"]
 P = m["primary_feature"]
+wv = m["variants_primary"]["filter_whole_recording_then_segment"]
 pct = lambda v: round(100 * v, 2)  # noqa: E731
 
 ev = {
@@ -21,7 +22,7 @@ ev = {
     "opportunity_id": "adhoc:PDEEG-001",
     "_comment": "Step-0 record. EvidenceItem/ArtifactRef shapes follow contracts/curation/curation-contracts-v1.schema.json. Status vocabulary: reported | verified | measured | planned | missing. This file names the hidden lever (segment-level vs subject-level evaluation), so like solution/ it is author_private for any held-out task.",
     "intake_route": ["advance_to_step0"],
-    "intake_reason": "Primary empirical paper with an exact, fully specified pipeline and headline (PD off-medication vs HC from resting EEG, 99.7-99.9% accuracy, KNN on DWT entropy features, 10 x 10-fold CV over 10 s segments). Fixed public substrate: OpenNeuro ds002778 (CC0; no credentials; data unchanged since the v1.0.2 the paper used, later versions edited README/citations only). Classical ML, minutes of CPU. Truth is a measurement on that substrate. The scientific concern is concrete: the folds are over segments, so each test segment's subject also contributes ~19 segments to training, while the paper presents the features as PD biomarkers for detection.",
+    "intake_reason": "Primary empirical paper with an exact, fully specified pipeline and headline (PD off-medication vs HC from resting EEG, 99.7-99.9% accuracy, KNN on DWT entropy features, 10 x 10-fold CV over 10 s segments). Fixed public substrate: OpenNeuro ds002778 (CC0; no credentials; data unchanged since the v1.0.2 the paper used, later versions edited README/citations only). Classical ML, minutes of CPU. Truth is a measurement on that substrate. The scientific concern is concrete: the folds are over segments, so each test segment's subject (about 19 segments each) also has ~16 other segments in the training set, while the paper presents the features as PD biomarkers for detection.",
     "paper": {
         "paper_id": "10.1038/s41598-022-26644-7",
         "paper_kind": "primary_empirical",
@@ -33,13 +34,13 @@ ev = {
             {"field": "paper_on_leakage", "status": "reported", "evidence_refs": [],
              "value": "Leave-one-subject-out was run only on the separate UNM cohort (54 subjects), reaching 85-88.6% after greedy forward channel selection that maximises that same LOSO accuracy. The Discussion attributes the LOSO-vs-k-fold gap to segments from the same subjects being in training and test ('data leakage problem') and calls k-fold 'intra-subject classification'. No subject-independent result is reported for the SanDiego set behind the 99.7-99.9% headline."},
             {"field": "dataset_curator_warning", "status": "verified", "evidence_refs": [],
-             "value": "The ds002778 README warns that a high PD-vs-HC classification accuracy from this dataset alone, without proper validation, could mislead patients and the public."}
+             "value": "The ds002778 README warns that a high PD-vs-HC machine-learning accuracy obtained without cross-validation and without validation on another dataset could mislead patients and the public."}
         ]
     },
     "substrate": {
         "dataset_id": "ds002778",
         "fetcher": "public S3 https://s3.amazonaws.com/openneuro.org/ds002778/ (no credentials, 571 MB): sub-hc*/ses-hc/eeg/*_eeg.bdf and sub-pd*/ses-off/eeg/*_eeg.bdf, participants.tsv",
-        "version_pin": "OpenNeuro ds002778 1.0.4 as served on 2026-10-08 (data identical to 1.0.2); mne==1.13.2 pywavelets==1.8.0 scikit-learn==1.9.1 numpy==2.5.3 scipy==1.18.1 pandas==3.0.6",
+        "version_pin": "OpenNeuro ds002778 1.0.4 as served on 2026-10-08 (data identical to 1.0.2); mne==1.13.2 pywavelets==1.10.0 scikit-learn==1.9.1 numpy==2.5.3 scipy==1.18.1 pandas==3.0.6",
         "cohort": f"{m['n_hc']} HC (ses-hc) + {m['n_pd']} PD off medication (ses-off); 32 scalp channels (EXG excluded), CAR; {m['n_segments']} segments ({m['n_pd_segments']} PD, {m['n_hc_segments']} HC; paper 300/306, difference from recording lengths: sub-pd14 alone gives 29 segments)",
         "access": "public"
     },
@@ -68,7 +69,7 @@ ev = {
                    "summary": f"Subject fingerprinting accounts for the segment-level number: with RANDOM subject-level labels (no disease information) the paper's segment-level CV still scores {pct(m['IDENT']['SEG_10fold_acc_with_random_subject_labels']['mean'])}% (range {pct(m['IDENT']['SEG_10fold_acc_with_random_subject_labels']['min'])}-{pct(m['IDENT']['SEG_10fold_acc_with_random_subject_labels']['max'])}% over 100 assignments), and the features identify which of 31 subjects a segment came from at {pct(m['IDENT']['subject_id_31way_SEG_10fold_acc'])}% (chance 3.2%). The segment-level accuracy therefore measures recognition of a person seen in training, not detection of PD in a new person."}},
         {"field": "alternative_explanations", "status": "measured", "evidence_refs": [M, QC],
          "value": {"BAND": m["BAND"], "variants_primary": m["variants_primary"],
-                   "summary": "Neither frequency range generalises across subjects: 0-32 Hz sub-bands and the 32-256 Hz sub-bands above the paper's own low-pass both give ~99% segment-level and ~43-49% LOSO; the unfiltered segment alone gives 91% and 55% (17/31, CI 0.36-0.73). 60 Hz line-noise ratio does not differ by group (p=.35); 64-128 Hz power is nominally higher in PD (p=.055) but does not yield subject-level accuracy. Causal filtering and z-scored features change nothing material (segment-level 99.2-99.7%, LOSO 38-40%)."}},
+                   "summary": f"Neither frequency range generalises across subjects: 0-32 Hz sub-bands and the 32-256 Hz sub-bands above the paper's own low-pass both give ~99% segment-level and ~43-49% LOSO; the band-passed segment alone, without the DWT sub-bands, gives 90.6% and 55.1% (17/31, CI 0.36-0.73). 60 Hz line-noise ratio does not differ by group (p=.35); 64-128 Hz power is nominally higher in PD (p=.055) but does not yield subject-level accuracy. Causal filtering and z-scored features change nothing material (segment-level 99.2-99.7%, LOSO 38-40%). Filter order does not matter either: band-passing the whole recording before segmenting (the paper's overview order) gives segment-level {wv['SEG_10x10fold'][0]:.2%}, LOSO {wv['SUBJ_loso']['segment_acc']:.2%} ({wv['SUBJ_loso']['subject_vote_correct']}/31), subject-grouped {wv['SUBJ_grouped_10x10fold'][0]:.2%}, against 99.73% / 45.36% (13/31) / 46.96% with per-segment filtering."}},
         {"field": "unm_paper_loso_claim", "status": "measured", "evidence_refs": [MU, LOGU1, LOGU2, SHA, CONS],
          "value": {"configs": U,
                    "summary": ("UNM cohort (PRED+CT d002, 27 PD / 27 HC, 2 s segments, 32 SanDiego channels; segment counts match the paper's Table 10 to within one segment). "
@@ -87,7 +88,8 @@ ev = {
             "subject-level label permutation of LOSO (1000)",
             "random subject-level labels under segment-level CV (100); 31-way subject identification",
             "sub-band subsets: cA4+cD4 (0-32 Hz), cD1-cD3 (32-256 Hz), segment only",
-            "zero-phase vs causal Butterworth; raw vs z-scored features (scaler fit inside folds)"
+            "zero-phase vs causal Butterworth; raw vs z-scored features (scaler fit inside folds)",
+            "filter order: band-pass per 10 s segment (paper Methods and Results) vs whole recording before segmenting (paper overview)"
         ],
         "honesty_notes": [
             "Uncertainty: with 31 subjects the subject-level CI upper bound is ~0.61, so a modest true subject-level accuracy with these features is not excluded; the result shows the 99.7% is not evidence of PD detection in new subjects, not that resting EEG carries no PD information (group-level differences in this dataset are reported elsewhere, e.g. beta-band measures).",
@@ -95,10 +97,11 @@ ev = {
             "SanDiego (chance at subject level) and UNM (modest above-chance subject-level accuracy with eyes closed) differ. The honest general statement is that segment-level accuracy overstates subject-independent performance by roughly 25-50 points on both cohorts, not that resting EEG cannot separate PD from controls.",
             "UNM caveats: preprocessing for UNM is unstated in the paper (here: file average reference, per-segment demeaning); Table 12's caption says off-PD but its text says on-PD and the eyes state is not given, so all four combinations are reported; only ThEn got the nested estimate and only off-PD eyes-open ThEn got the permutation null; 16 KNN configs plus 4 LDA cells were examined, so single configs near p=.05 are not interpreted.",
             "UNM data provenance: the PRED+CT d002 link resolves to a SharePoint guest-access folder that also contains unrelated third-party uploads; only <id>_<session>_PD_REST.mat and IMPORT_ME_REST.xlsx were used, and their sha256 are recorded (unm_d002_sha256.tsv). sub 821's on-medication file contains the rest block twice; it is kept, which reproduces the paper's 840 on-PD segments.",
+            "The paper is internally inconsistent on filter order: the overview of the pipeline says the band-pass is applied before segmentation, while the preprocessing Methods and the SanDiego Results both say the 10 s segments are filtered. The task follows the Methods/Results order and states this in instruction.md; the other order gives the same result (variants_primary.filter_whole_recording_then_segment).",
             "Manual artefact rejection by the original authors cannot be replicated on the raw BDFs; segment counts differ slightly (593 vs 606). The segment-level result reproduces regardless."
         ]
     },
-    "failure_axis": "over-claim (generalization): a leaked segment-level accuracy reported as PD detection",
+    "failure_axis": "leakage (statistical inference / evaluation design): participant leakage in segment-level CV; the symptom is an over-claim, a leaked segment-level accuracy reported as PD detection",
     "critical_path_test": {
         "question": "To complete exactly what the instruction asks, must a competent agent already make this correction or choice?",
         "answer": "no, as built: instruction.md pins the paper's 10 x 10-fold CV over segments; the participant-held-out evaluation is required only by the estimate check, which the instruction does not describe",

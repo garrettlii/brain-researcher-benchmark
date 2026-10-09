@@ -1,3 +1,3 @@
 note = "manufactured: threshold 0.2 applied to signals in volts, so every count is zero"
 [expect]
-test_features_and_paper_evaluation = "fail"
+test_features_match_recordings = "fail"

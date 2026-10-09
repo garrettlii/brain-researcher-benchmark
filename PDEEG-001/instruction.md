@@ -23,16 +23,20 @@ by position.
 **Reproduce the threshold-entropy result, and report whether it holds on these data and
 what accuracy it supports for this pipeline as a PD-vs-control classifier.**
 
-The paper's pipeline, with the details it leaves open for these files fixed here:
+The pipeline below is the paper's. Where the paper is silent about these files, or
+inconsistent, the choice is fixed here and marked *(fixed here)*.
 
 1. Channels: the 32 scalp electrodes `Fp1, AF3, F7, F3, FC1, FC5, T7, C3, CP1, CP5, P7, P3,
    Pz, PO3, O1, Oz, O2, PO4, P4, P8, CP6, CP2, C4, T8, FC6, FC2, F4, F8, AF4, Fp2, Fz, Cz`,
-   in µV. Remove each channel's mean over the recording, then re-reference to the average
-   of these 32 channels.
-2. Segments: consecutive non-overlapping 10 s windows (5120 samples at 512 Hz) from sample
-   0 of each recording. Discard the incomplete tail.
-3. Filtering, per segment: a 5th-order Butterworth band-pass at 0.5–32 Hz, applied
-   zero-phase (forward–backward) in second-order sections.
+   in µV. As in the paper's data description, remove each channel's mean over the
+   recording, then re-reference to the average of these 32 channels.
+2. Segments: consecutive non-overlapping 10 s windows (5120 samples at 512 Hz). *(Fixed
+   here: the paper's manual artefact removal cannot be reproduced from the raw files.)*
+   Start at sample 0 of each recording, reject nothing, and discard the incomplete tail.
+3. Filtering: a 5th-order Butterworth band-pass at 0.5–32 Hz, applied zero-phase
+   (forward–backward) in second-order sections. *(Fixed here.)* Filter each 10 s segment
+   separately. That is the order given in the paper's preprocessing Methods and its
+   SanDiego Results; the paper's pipeline overview lists filtering before segmentation.
 4. Decomposition: a 4-level `db4` discrete wavelet transform with symmetric extension
    (MATLAB `'sym'`, PyWavelets `'symmetric'`). Reconstruct each of D1, D2, D3, D4 and A4
    separately at full segment length (MATLAB `wrcoef`). Together with the filtered segment
@@ -62,12 +66,13 @@ gives the exact columns and fields.
 - `cv_predictions.csv`: for every cross-validation you report, the out-of-fold prediction
   for every segment as `evaluation_id, repeat, fold, segment_id, predicted_group`.
 - `evaluations.json`: an `evaluations` list, one entry per cross-validation in
-  `cv_predictions.csv` (`evaluation_id`, `description`, mean `accuracy`). Also an `estimate`
-  object: the `accuracy` you would report for this pipeline as a PD-vs-control classifier,
-  and the `evaluation_id` it comes from.
-- `run_metadata.json`: dataset id, counts, the implementation choices you made, and
-  software versions.
-- `findings.md`: a short write-up of the results and what they support.
+  `cv_predictions.csv` (`evaluation_id`, `description`, mean segment `accuracy`). Also an
+  `estimate` object: the `accuracy` you would report for this pipeline as a PD-vs-control
+  classifier, the `evaluation_id` it comes from, and its `metric`.
+- `run_metadata.json`: `dataset_id`, `n_participants`, `n_segments`, the `preprocessing` and
+  implementation choices you made, and software `versions`.
+- `findings.md`: a short write-up of the results, including the estimate, and what they
+  support.
 
 Numerically equivalent implementations are accepted.
 

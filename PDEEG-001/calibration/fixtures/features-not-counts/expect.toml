@@ -1,0 +1,3 @@
+note = "manufactured: features written as fractions of the segment instead of sample counts"
+[expect]
+test_features_match_recordings = "fail"

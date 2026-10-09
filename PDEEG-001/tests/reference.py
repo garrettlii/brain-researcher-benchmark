@@ -63,7 +63,29 @@ def reference_segments():
 
 
 def knn3_predict(Xtr, ytr, Xte):
+    """3-nearest-neighbour majority vote (Euclidean, unscaled). Rejects inputs on which a
+    3-NN vote is undefined instead of returning a default label."""
+    Xtr, Xte, ytr = np.asarray(Xtr, float), np.asarray(Xte, float), np.asarray(ytr, dtype=object)
+    if Xtr.ndim != 2 or Xte.ndim != 2 or Xtr.shape[1] != Xte.shape[1]:
+        raise ValueError(f"feature arrays must be 2-D with matching columns, got {Xtr.shape} and {Xte.shape}")
+    if len(Xtr) < 3:
+        raise ValueError(f"3-NN needs at least 3 training samples, got {len(Xtr)}")
+    if len(Xte) == 0:
+        raise ValueError("empty test set")
+    if len(ytr) != len(Xtr) or not set(ytr) <= {"PD", "HC"}:
+        raise ValueError("training labels must be PD/HC, one per training sample")
+    if not (np.isfinite(Xtr).all() and np.isfinite(Xte).all()):
+        raise ValueError("non-finite feature values")
     d = (Xte ** 2).sum(1)[:, None] + (Xtr ** 2).sum(1)[None] - 2 * Xte @ Xtr.T
     nn = np.argsort(d, axis=1, kind="stable")[:, :3]
     votes = (ytr[nn] == "PD").sum(1)
     return np.where(votes >= 2, "PD", "HC")
+
+
+def majority_vote_accuracy(pred, truth, pid):
+    """Per-participant majority vote: PD if more than half of the participant's segments are
+    predicted PD, HC if fewer than half; an exact tie counts as an error."""
+    share = pd.Series(np.asarray(pred) == "PD").groupby(np.asarray(pid)).mean()
+    label = pd.Series(np.asarray(truth)).groupby(np.asarray(pid)).first().loc[share.index]
+    vote = np.where(share > 0.5, "PD", np.where(share < 0.5, "HC", "tie"))
+    return float(np.mean(vote == label.to_numpy()))

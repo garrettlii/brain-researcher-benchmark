@@ -1,0 +1,4 @@
+note = "manufactured (review finding 4): findings.md is a generic paragraph that never states the estimate"
+[expect]
+test_report_and_metadata = "fail"
+"*" = "pass"

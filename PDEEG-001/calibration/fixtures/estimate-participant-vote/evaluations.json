@@ -20,6 +20,7 @@
   },
   "estimate": {
     "evaluation_id": "leave_one_participant_out",
+    "metric": "participant_majority_accuracy",
     "accuracy": 0.419355
   },
   "evaluations": [
@@ -31,7 +32,7 @@
       "evaluation_id": "paper_segment_10x10",
       "n_folds": 10,
       "n_repeats": 10,
-      "participant_majority_vote_accuracy": 1.0
+      "participant_majority_accuracy": 1.0
     },
     {
       "accuracy": 0.453626,
@@ -41,12 +42,12 @@
       "evaluation_id": "leave_one_participant_out",
       "n_folds": 31,
       "n_repeats": 1,
-      "participant_majority_vote_accuracy": 0.419355,
-      "participant_majority_vote_ci95_exact": [
+      "participant_majority_accuracy": 0.419355,
+      "participant_majority_ci95_exact": [
         0.2455,
         0.6092
       ],
-      "participant_majority_vote_correct": "13/31"
+      "participant_majority_correct": "13/31"
     },
     {
       "accuracy": 0.469646,
@@ -56,7 +57,7 @@
       "evaluation_id": "participant_grouped_10x10",
       "n_folds": 10,
       "n_repeats": 10,
-      "participant_majority_vote_accuracy": 0.454839
+      "participant_majority_accuracy": 0.451613
     }
   ]
 }

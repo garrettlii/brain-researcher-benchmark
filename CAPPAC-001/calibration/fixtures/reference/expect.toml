@@ -1,3 +1,3 @@
-note = "TODO(author): reference findings.md (copy from the oracle run's /app/output)"
+note = "reference: solution/compute.py run locally on the staged files (2026-10-09)"
 [expect]
 "*" = "pass"

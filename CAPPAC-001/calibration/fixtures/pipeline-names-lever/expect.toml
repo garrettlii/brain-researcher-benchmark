@@ -1,3 +1,4 @@
-note = "TODO(author): adversarial: names the lever only as a preprocessing step (the recurring false-pass class)"
+note = "author-written probe (2026-10-09), reference numerical outputs held fixed; not an agent run; reviewer class 4a: the inclusion rule described as a duration control"
 [expect]
-TODO_author_judgement_test = "fail"
+test_findings_explain_the_subtype_ordering = "fail"
+"*" = "pass"

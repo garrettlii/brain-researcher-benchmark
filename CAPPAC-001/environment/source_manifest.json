@@ -1,0 +1,202 @@
+{
+ "dataset_id": "PhysioNet CAP Sleep Database 1.0.0 (capslpdb), healthy recordings n1-n16",
+ "source": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/ (PhysioNet's public AWS mirror of https://physionet.org/content/capslpdb/1.0.0/)",
+ "license": "Open Data Commons Attribution License v1.0",
+ "captured": "2026-10-09",
+ "n_files": 32,
+ "total_bytes": 3816746073,
+ "files": [
+  {
+   "path": "n1.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n1.edf",
+   "bytes": 496456432,
+   "sha256": "25d4e62a7a90d8245c71c7f168e34756238bb6ac7b1d43dcc75818d0331d43f4"
+  },
+  {
+   "path": "n1.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n1.txt",
+   "bytes": 84246,
+   "sha256": "913ffd33166376f7eb46c946377e5b4017ad38809b28757763cb5bfd71004143"
+  },
+  {
+   "path": "n10.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n10.edf",
+   "bytes": 474168064,
+   "sha256": "5da131fdc8a1c11c38a84c88f22a27f7df072153c65d3260c0bad01a2968263d"
+  },
+  {
+   "path": "n10.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n10.txt",
+   "bytes": 56182,
+   "sha256": "123718da69a6e4f90cb84e712855bef74c276bb07ed8556839aa15877d66fb5b"
+  },
+  {
+   "path": "n11.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n11.edf",
+   "bytes": 518257688,
+   "sha256": "4d40d4f5303385ef27d2b3f0789f3d55e7dde1773621a4c50fc3b243a9de03aa"
+  },
+  {
+   "path": "n11.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n11.txt",
+   "bytes": 71536,
+   "sha256": "8ff8bd061c395b3db71de0e988ea9f65ed48a72ae580d717db3865085784102a"
+  },
+  {
+   "path": "n12.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n12.edf",
+   "bytes": 53462560,
+   "sha256": "2025977ee59bad8f7766f856ab9fa410798c407f40be094753d98d1d57cfa92e"
+  },
+  {
+   "path": "n12.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n12.txt",
+   "bytes": 61098,
+   "sha256": "9c8f36ad88a8f7f6c65feda525eaedb2060ac73b59ed2f2b7fa14a9ddae6c2b7"
+  },
+  {
+   "path": "n13.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n13.edf",
+   "bytes": 123596472,
+   "sha256": "12fc77e1ee74f14a5375b1c08033f08debba2b4e485313da7cfe9f304b68a131"
+  },
+  {
+   "path": "n13.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n13.txt",
+   "bytes": 73138,
+   "sha256": "2ea87fbeb513c48748b9bee97ac4ea25d76d2426251186b2652533012c67076c"
+  },
+  {
+   "path": "n14.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n14.edf",
+   "bytes": 130027472,
+   "sha256": "e25af1fa67562d5e7661bc45c201ec98fde5089866f192cd4b1abd759f5ab521"
+  },
+  {
+   "path": "n14.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n14.txt",
+   "bytes": 69390,
+   "sha256": "9e6f41b61a42c920193a89a45f8d748913b111c6c666287fee70887491b3341f"
+  },
+  {
+   "path": "n15.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n15.edf",
+   "bytes": 130463072,
+   "sha256": "4681ca4d55bd15540b1bd855d22b63f9b44b2a22e45dac9870379a292b540159"
+  },
+  {
+   "path": "n15.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n15.txt",
+   "bytes": 70835,
+   "sha256": "32ee69553fede2c5a2b8aaf5ab93f0434288e3b21a2cf02e598cc1d0b1eac28f"
+  },
+  {
+   "path": "n16.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n16.edf",
+   "bytes": 30801536,
+   "sha256": "4e3119e03f58149feb39745fb0f0ca976cecc33ed8bc0366293d3d5fd8ac9766"
+  },
+  {
+   "path": "n16.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n16.txt",
+   "bytes": 74669,
+   "sha256": "470f44bf601d9b560f67fb6133da98c7853044aeffa3f079dfd383c063aba7f1"
+  },
+  {
+   "path": "n2.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n2.edf",
+   "bytes": 372825496,
+   "sha256": "2bea9302fb7a50a10558cddcb9a6666da55799e051b90fc5f4cd661943b68782"
+  },
+  {
+   "path": "n2.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n2.txt",
+   "bytes": 45163,
+   "sha256": "933b6aeedec614036af82e168e8bb314b8592b30315d31c004f5d058f3ae16a7"
+  },
+  {
+   "path": "n3.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n3.edf",
+   "bytes": 550339550,
+   "sha256": "d3c8e3cace8c2ed6c020ddfdd658ab344fcd0eceeee6b6f12a3d06747cd12ac2"
+  },
+  {
+   "path": "n3.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n3.txt",
+   "bytes": 44965,
+   "sha256": "ec11945397a2447198a2a0d19bc2993be224f7485192d9adbc3b6449f52d2826"
+  },
+  {
+   "path": "n4.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n4.edf",
+   "bytes": 128740088,
+   "sha256": "1bf376bc3debfb7dae36943f12a79ec7e1127a29efd6a886190748cf41db124c"
+  },
+  {
+   "path": "n4.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n4.txt",
+   "bytes": 54423,
+   "sha256": "5dd6efc5bb15b3f0df741115d308680727e0979bbda5a0c9208cb3db28cdedc6"
+  },
+  {
+   "path": "n5.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n5.edf",
+   "bytes": 523373030,
+   "sha256": "10a3ba52d2f2ee238f5885331c7b0b523c024a8c6e6f3a03ff8432f30fd72942"
+  },
+  {
+   "path": "n5.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n5.txt",
+   "bytes": 78572,
+   "sha256": "405513f56918cadeb2ea6bf253cf6ee3dabe07c3dae2fc58afa0931cc0ec4f33"
+  },
+  {
+   "path": "n6.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n6.edf",
+   "bytes": 64770304,
+   "sha256": "b3b7b0a0cdb98c7995c27a4a01c979dfa38291c8df7375cf8116b4170817116f"
+  },
+  {
+   "path": "n6.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n6.txt",
+   "bytes": 48282,
+   "sha256": "9991ac484252a396039e9bf1931ff373d9e67bbdd30aa89d95efc868ab40649d"
+  },
+  {
+   "path": "n7.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n7.edf",
+   "bytes": 60500224,
+   "sha256": "fd6b1ca9c177d52f32bac35ad0b5980b582738400cab47ed4c38bfa77f5ec962"
+  },
+  {
+   "path": "n7.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n7.txt",
+   "bytes": 69641,
+   "sha256": "43538aad1995aa5e2fa88046db9c1799abe2a6a79415c292418bf8363a3b2608"
+  },
+  {
+   "path": "n8.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n8.edf",
+   "bytes": 92527040,
+   "sha256": "8c88658438a8a280589c37498ab120c8ca1378f1adf03a2ecaee07ebd8b871d8"
+  },
+  {
+   "path": "n8.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n8.txt",
+   "bytes": 52631,
+   "sha256": "f64ba59182e28e7d7030406ef33d71ac7bf55781a94dadb74a3dde14f30d6706"
+  },
+  {
+   "path": "n9.edf",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n9.edf",
+   "bytes": 65417472,
+   "sha256": "627faf4a41f20920267df1c58a37975e3a56d06da0cbf619c66d9334f232c132"
+  },
+  {
+   "path": "n9.txt",
+   "url": "https://physionet-open.s3.amazonaws.com/capslpdb/1.0.0/n9.txt",
+   "bytes": 64802,
+   "sha256": "93f6d6d1167a590adbabae9bc24c67dd17e50a345596b9d800acb6a9f91a4a3f"
+  }
+ ]
+}

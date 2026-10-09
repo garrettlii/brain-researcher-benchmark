@@ -1,0 +1,136 @@
+{
+  "schema_version": "benchmark-question-spec-v1",
+  "question_id": "CAPPAC-001",
+  "opportunity_id": "adhoc:CAPPAC-001",
+  "paper_candidate_id": "10.1038/s41598-018-21013-9",
+  "public_instruction_ref": {
+    "artifact_id": "CAPPAC-001:instruction.md",
+    "uri": "instruction.md",
+    "sha256": "c90fc148a3a1ccfb4748ca8da08a65812a57da901696d0e0c973827308aaadfc",
+    "media_type": "text/markdown",
+    "visibility": "public"
+  },
+  "fixed_substrate_ref": {
+    "artifact_id": "CAPPAC-001:task.toml",
+    "uri": "task.toml",
+    "sha256": "7587dd1420ed0b692a4fdef8917bbe940bcf1e957003a35e59665ccd26591648",
+    "media_type": "application/octet-stream",
+    "visibility": "public"
+  },
+  "expected_output_schema_ref": {
+    "artifact_id": "CAPPAC-001:instruction.md",
+    "uri": "instruction.md",
+    "sha256": "c90fc148a3a1ccfb4748ca8da08a65812a57da901696d0e0c973827308aaadfc",
+    "media_type": "text/markdown",
+    "visibility": "public"
+  },
+  "oracle_ref": {
+    "artifact_id": "CAPPAC-001:solution_compute.py",
+    "uri": "solution/compute.py",
+    "sha256": "d3f2c346e4fa4b53a25c8ed2d7a949484cc1f15639af485084be2a37c12a70d4",
+    "media_type": "text/x-python",
+    "visibility": "oracle_private"
+  },
+  "verifier_ref": {
+    "artifact_id": "CAPPAC-001:tests_test_outputs.py",
+    "uri": "tests/test_outputs.py",
+    "sha256": "c02ff4e6f8154ee786893510a686f148215c2b5df4c19723ff104b3b884ca9a0",
+    "media_type": "text/x-python",
+    "visibility": "oracle_private"
+  },
+  "required_artifact_refs": [
+    {
+      "artifact_id": "CAPPAC-001:instruction.md",
+      "uri": "instruction.md",
+      "sha256": "c90fc148a3a1ccfb4748ca8da08a65812a57da901696d0e0c973827308aaadfc",
+      "media_type": "text/markdown",
+      "visibility": "public"
+    },
+    {
+      "artifact_id": "CAPPAC-001:task.toml",
+      "uri": "task.toml",
+      "sha256": "7587dd1420ed0b692a4fdef8917bbe940bcf1e957003a35e59665ccd26591648",
+      "media_type": "application/octet-stream",
+      "visibility": "public"
+    },
+    {
+      "artifact_id": "CAPPAC-001:environment_Dockerfile",
+      "uri": "environment/Dockerfile",
+      "sha256": "21f31fa879646ebddb2375eb6a81c0de9240ce3373939c25d396d2bee9635ba1",
+      "media_type": "application/octet-stream",
+      "visibility": "public"
+    },
+    {
+      "artifact_id": "CAPPAC-001:solution_solve.sh",
+      "uri": "solution/solve.sh",
+      "sha256": "f10bfdf873b431245423424b64d2b113609104af533b0b10b4420e158b1b34bf",
+      "media_type": "application/x-sh",
+      "visibility": "oracle_private"
+    },
+    {
+      "artifact_id": "CAPPAC-001:solution_compute.py",
+      "uri": "solution/compute.py",
+      "sha256": "d3f2c346e4fa4b53a25c8ed2d7a949484cc1f15639af485084be2a37c12a70d4",
+      "media_type": "text/x-python",
+      "visibility": "oracle_private"
+    },
+    {
+      "artifact_id": "CAPPAC-001:tests_test.sh",
+      "uri": "tests/test.sh",
+      "sha256": "312f9b68d38b5fd414f6a14c70ac19b0f1e6bcc282124f59364eaad5a0acce95",
+      "media_type": "application/x-sh",
+      "visibility": "oracle_private"
+    },
+    {
+      "artifact_id": "CAPPAC-001:tests_test_outputs.py",
+      "uri": "tests/test_outputs.py",
+      "sha256": "c02ff4e6f8154ee786893510a686f148215c2b5df4c19723ff104b3b884ca9a0",
+      "media_type": "text/x-python",
+      "visibility": "oracle_private"
+    },
+    {
+      "artifact_id": "CAPPAC-001:proposal.md",
+      "uri": "proposal.md",
+      "sha256": "35b531c803543438f659fea3d45df745ccb97c0df587fba7501d76dec26ce74c",
+      "media_type": "text/markdown",
+      "visibility": "author_private"
+    },
+    {
+      "artifact_id": "CAPPAC-001:step0_evidence.json",
+      "uri": "step0/evidence.json",
+      "sha256": "02b997ba8a7ffa0a85df76b2d576136dbb64764dc7b0b3f6475c62ed65fa78b4",
+      "media_type": "application/json",
+      "visibility": "author_private"
+    }
+  ],
+  "private_failure_axis_ref": {
+    "artifact_id": "CAPPAC-001:step0_evidence.json",
+    "uri": "step0/evidence.json",
+    "sha256": "02b997ba8a7ffa0a85df76b2d576136dbb64764dc7b0b3f6475c62ed65fa78b4",
+    "media_type": "application/json",
+    "visibility": "author_private"
+  },
+  "private_hidden_lever_ref": {
+    "artifact_id": "CAPPAC-001:step0_evidence.json",
+    "uri": "step0/evidence.json",
+    "sha256": "02b997ba8a7ffa0a85df76b2d576136dbb64764dc7b0b3f6475c62ed65fa78b4",
+    "media_type": "application/json",
+    "visibility": "author_private"
+  },
+  "calibration_status": "not_run",
+  "release_status": "draft",
+  "benchmark_verdict": "build_hard_candidate",
+  "intake_route": [
+    "advance_to_step0"
+  ],
+  "critical_path_result": "no (judgement beyond routine execution, still necessary for the public question)",
+  "agent_headroom_hypothesis": "Agents implement Tort MI as pinned, get the paper's numbers almost exactly with a very large effect (d_z 2.5, p = 4e-8), and confirm that A1 shows the strongest coupling, adding generic PAC caveats (volume conduction, non-sinusoidal waveforms, spectral power, small n). Seeing that the subtypes differ two-fold in length and that the estimator's floor scales with length requires interrogating the measure against the annotation, not running more contrasts. Risks: PAC-literate agents may z-score against surrogates as a habit; routine per-segment significance testing shows coupling barely above chance (7-8% of segments pass the 95th percentile in every subtype); the paper's Methods give the duration rationale for the >2-cycle rule, which an agent recalling the paper may follow up (the task runs offline). All of these are accepted as sufficient routes when linked to the subtype ordering: equal-length windows, floor/surrogate subtraction or z-scores, duration-matched pairs or bins, MI vs duration slopes within subtype, duration as a covariate, and an equal share of surrogate-significant segments. The required outputs ask for no significance-against-chance quantity. Stage 5 decides.",
+  "step0_evidence_ref": {
+    "artifact_id": "CAPPAC-001:step0_evidence.json",
+    "uri": "step0/evidence.json",
+    "sha256": "02b997ba8a7ffa0a85df76b2d576136dbb64764dc7b0b3f6475c62ed65fa78b4",
+    "media_type": "application/json",
+    "visibility": "author_private"
+  },
+  "calibration_plan": "oracle reward 1.0 in-container; calibration/fixtures discrimination (tools/check_verifier.py); >=2 frontier families x k>=3, hand re-scored (TASK_WORKFLOW.md Stages 4-5)"
+}

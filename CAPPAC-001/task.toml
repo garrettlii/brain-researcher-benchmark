@@ -1,35 +1,35 @@
 version = "1.1"
 instruction_version = "1.0"
 test_version = "1.0"
+artifacts = ["/app/output"]
 
 [metadata]
 task_id = "CAPPAC-001"
-# Metadata is for maintainers; the agent sees only instruction.md. The shipped examples
-# name the trap in the title (e.g. "un-cued motion confound"), which is fine here.
-title = "TODO(author): Reproduce <paper>'s <headline result>: un-cued <lever>"
-category = "Reproduction"            # Reproduction | Connectivity | Activation | Structural | Prediction | EEG
+# Metadata is for maintainers; the agent sees only instruction.md.
+title = "Reproduce Yeh & Shi 2018's CAP phase-A coupling ordering (A1 > A2 > A3): un-cued segment-length bias of the modulation index"
+category = "EEG"
+# Target difficulty; not yet measured (Harbor oracle and frontier-agent calibration pending).
 difficulty = "hard"
-dataset_source = "TODO(author): e.g. OpenNeuro (nilearn-pinned derivatives)"
-dataset_id = "TODO(author): e.g. ds000228"
-source_paper = "TODO(author): Author et al. YEAR, Journal (DOI)"
+dataset_source = "PhysioNet CAP Sleep Database 1.0.0 (ODC-By 1.0): 16 healthy-control EDF recordings and RemLogic event exports, staged and sha256-checked at image build; offline runtime"
+dataset_id = "capslpdb-1.0.0-n1-n16"
+source_paper = "Yeh & Shi 2018, Sci Rep 8:3049 (10.1038/s41598-018-21013-9)"
 
-# Budget from the measured oracle runtime (step0/run.log) with about 2x headroom.
-# Agents take roughly 3x the oracle's time.
-# Measured so far: GRADIENT oracle ~4 min (3000 s), DEVCONN ~6 min (7200 s),
-# SOCIALBRAIN ~35 min with GSR (5400 s).
+# Reference solution: 46 s locally (Apple M-series, 2 processes, ~60 CPU-s, ~1.6 GB per
+# process), so a few minutes on the container's 2 CPUs. Staging downloads 3.8 GB at build time.
+# Verifier: <1 s (reads the outputs, no recomputation). Neither has run in the container yet.
 [verifier]
-timeout_sec = 3600.0
+timeout_sec = 600.0
 
 [agent]
 timeout_sec = 3600.0
 
 [environment]
-build_timeout_sec = 2400.0
+build_timeout_sec = 3600.0
 cpus = 2
 memory_mb = 8192
 storage_mb = 16384
 gpus = 0
-allow_internet = true                # data is fetched at runtime; never bake the dataset into the image
+allow_internet = false
 
 [verifier.env]
 

@@ -1,0 +1,4 @@
+note = "author-written probe (2026-10-09), reference numerical outputs held fixed; not an agent run; z-scores used only for significance, raw ordering confirmed"
+[expect]
+test_findings_explain_the_subtype_ordering = "fail"
+"*" = "pass"

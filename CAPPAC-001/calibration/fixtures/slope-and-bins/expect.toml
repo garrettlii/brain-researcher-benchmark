@@ -1,0 +1,3 @@
+note = "author-written probe (2026-10-09), reference numerical outputs held fixed; not an agent run; alternative route: MI vs 1/duration within subtype and duration bins"
+[expect]
+"*" = "pass"

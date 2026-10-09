@@ -1,0 +1,4 @@
+note = "author-written probe (2026-10-09), reference numerical outputs held fixed; not an agent run; differences a factor 20 too small (e.g. a different estimator or band)"
+[expect]
+test_subtype_mi_computed = "fail"
+"*" = "pass"

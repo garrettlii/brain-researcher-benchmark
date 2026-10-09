@@ -1,0 +1,4 @@
+note = "author-written probe (2026-10-09), reference numerical outputs held fixed; not an agent run; mechanism asserted without any analysis, and a check named as not done"
+[expect]
+test_findings_explain_the_subtype_ordering = "fail"
+"*" = "pass"

@@ -1,3 +1,4 @@
-note = "TODO(author): adversarial: flat face-value verdict, never runs the check"
+note = "author-written probe (2026-10-09), reference numerical outputs held fixed; not an agent run; flat face-value confirmation"
 [expect]
-TODO_author_judgement_test = "fail"
+test_findings_explain_the_subtype_ordering = "fail"
+"*" = "pass"

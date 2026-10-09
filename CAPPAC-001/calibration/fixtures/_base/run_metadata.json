@@ -1,0 +1,112 @@
+{
+  "task_id": "CAPPAC-001",
+  "status": "ok",
+  "dataset_id": "PhysioNet CAP Sleep Database 1.0.0 (capslpdb), healthy recordings n1-n16",
+  "source_dir": "/Users/garrettli/.cache/brb/capslpdb",
+  "recordings": {
+    "n1": {
+      "channel": "C4-A1",
+      "fs_hz": 512.0
+    },
+    "n2": {
+      "channel": "C4-A1",
+      "fs_hz": 512.0
+    },
+    "n3": {
+      "channel": "C4-A1",
+      "fs_hz": 512.0
+    },
+    "n4": {
+      "channel": "C4-A1",
+      "fs_hz": 100.0
+    },
+    "n5": {
+      "channel": "C4-A1",
+      "fs_hz": 512.0
+    },
+    "n6": {
+      "channel": "C3-A2",
+      "fs_hz": 128.0
+    },
+    "n7": {
+      "channel": "C3-A2",
+      "fs_hz": 128.0
+    },
+    "n8": {
+      "channel": "C3-A2",
+      "fs_hz": 100.0
+    },
+    "n9": {
+      "channel": "C3-A2",
+      "fs_hz": 128.0
+    },
+    "n10": {
+      "channel": "C4-A1",
+      "fs_hz": 512.0
+    },
+    "n11": {
+      "channel": "C4-A1",
+      "fs_hz": 512.0
+    },
+    "n12": {
+      "channel": "C4-A1",
+      "fs_hz": 100.0
+    },
+    "n13": {
+      "channel": "C4A1",
+      "fs_hz": 200.0
+    },
+    "n14": {
+      "channel": "C4A1",
+      "fs_hz": 200.0
+    },
+    "n15": {
+      "channel": "C4A1",
+      "fs_hz": 200.0
+    },
+    "n16": {
+      "channel": "C4-A1",
+      "fs_hz": 100.0
+    }
+  },
+  "phase_a_events": {
+    "A1": 4017,
+    "A2": 1341,
+    "A3": 1211
+  },
+  "excluded": {
+    "A1:movement_time": 6,
+    "A1:two_or_fewer_delta_cycles": 88,
+    "A2:movement_time": 8,
+    "A2:two_or_fewer_delta_cycles": 19,
+    "A3:movement_time": 62,
+    "A3:two_or_fewer_delta_cycles": 4
+  },
+  "analysed_segments": {
+    "A1": 3923,
+    "A2": 1314,
+    "A3": 1145
+  },
+  "settings": {
+    "phase_band_hz": [
+      0.25,
+      2.5
+    ],
+    "amplitude_band_hz": [
+      10.0,
+      17.0
+    ],
+    "filter": "Butterworth order 4, sosfiltfilt, whole night",
+    "phase_bins": 20,
+    "inclusion": "delta phase advances > 2 cycles",
+    "min_segments_per_subtype": 5,
+    "statistics": "paired t across subjects, 95% t CI"
+  },
+  "versions": {
+    "python": "3.14.7",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pandas": "3.0.6"
+  },
+  "runtime_s": 46.0
+}

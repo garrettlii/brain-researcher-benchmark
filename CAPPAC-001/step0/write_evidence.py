@@ -21,6 +21,15 @@ PS, PSLOG, ADD = R("step0/posthoc_sigonly.py"), R("step0/outputs/posthoc_sigonly
 raw, dur, fl, crop, deb, ex = (m[k] for k in ("raw_A1_A3", "premise_duration_A1_A3", "premise_floor_A1_A3",
                                                "ctrl_crop4_A1_A3", "ctrl_debias_A1_A3", "exploratory"))
 d_raw = raw["mean"]
+# F4 (review of ba56a10): how close the predeclared 50%-of-raw upper-CI bound was, and what other windows would have given.
+MARGIN = {"rule": "point estimate <= 25% and upper 95% CI < 50% of the raw A1 - A3 difference (claim_scope.md)",
+          "crop_first4s_upper_ratio": round(crop["ci"][1] / d_raw, 3),
+          "same_rule_other_windows_upper_ratio": {k: round(ex[k]["ci"][1] / d_raw, 3) for k in ("mi_first3", "mi_first5", "mi_first6", "mi_mid4")}
+          | {"duration_matched_1s_bins": round(ex["duration_matched_A1_A3"]["ci"][1] / d_raw, 3)},
+          "reading": ("The verdict rests on the predeclared 4-s crop, whose upper CI is 48% of raw against a 50% bound. Under the same rule "
+                      "the 3-s crop (54%), duration-matched 1-s bins (54%) and the middle 4 s (49.9%) would have been unresolved, while 5-s "
+                      "and 6-s crops clear it easily. L = 4 s was fixed before the probe, so the verdict stands, but the margin is narrow "
+                      "and the key is worded accordingly: most of the ordering is length, a small residual remains.")}
 
 
 def s(r, nd=5):
@@ -123,11 +132,12 @@ ev = {
          "value": {"crop_first4s_A1_A3": small(crop), "debias_A1_A3": small(deb),
                    "crop_ratio": round(crop["mean"] / d_raw, 3), "crop_upper_ratio": round(crop["ci"][1] / d_raw, 3),
                    "debias_ratio": round(deb["mean"] / d_raw, 3), "debias_upper_ratio": round(deb["ci"][1] / d_raw, 3),
-                   "verdict_rule": m["verdict"],
+                   "verdict_rule": m["verdict"], "rule_margin": MARGIN,
                    "summary": (f"Length bias accounts for the subtype difference under the predeclared rule. C-crop (first 4 s of every "
                                f"segment >= 4 s): {s(crop)}, {crop['mean'] / d_raw:.0%} of raw (upper CI {crop['ci'][1] / d_raw:.0%}). "
                                f"C-debias (MI minus floor): {s(deb)}, {deb['mean'] / d_raw:.0%} of raw (upper CI {deb['ci'][1] / d_raw:.0%}). "
-                               f"Both point estimates <= 25% and upper CIs < 50% of raw. A small debiased residual remains (p = {deb['p']:.2g}).")}},
+                               f"Both point estimates <= 25% and upper CIs < 50% of raw. A small debiased residual remains (p = {deb['p']:.2g}). "
+                               f"Margin: the crop's upper CI is {crop['ci'][1] / d_raw:.1%} of raw against the 50% bound (rule_margin).")}},
     ],
     "exploratory": {
         "status": "measured", "evidence_refs": [M, LOG, PZ, PZLOG, PZJ, PB, PBLOG, PBJ, PC, PCLOG, PS, PSLOG],
@@ -148,10 +158,10 @@ ev = {
                                                                  "fig3a_read": {"A1": 0.0118, "A2": 0.0100, "A3": 0.0065}},
         },
         "reading": ("Every other crop length (3, 5, 6 s) and the middle 4 s give A1 - A3 within +-0.0008 (all p > .3); 1-s duration "
-                    "bins give +0.0013 [-0.0002, +0.0027]. Surrogate z-scored MI shows no subtype difference (circular shifts p = .09, "
+                    "bins give +0.0013 [-0.0002, +0.0027]. Surrogate z-scored MI shows no significant subtype difference, same direction (circular shifts p = .09, "
                     "the paper's block-swap surrogates p = .17), and only 7-8% of segments of any subtype exceed the 95th percentile "
                     "of their block-swap surrogates. With delta 1-2.5 Hz or the F4-C4 derivation the floor is 94-96% of the raw "
-                    "difference and both controls are null (4-16% of raw, p > .13). The paper's secondary 'light > deep' reading "
+                    "difference and neither control is significant (4-16% of raw, p > .13). The paper's secondary 'light > deep' reading "
                     "behaves the same way within A1: S2 - S4 raw +0.0035 (p = .0001), cropped -0.0004 (p = .59), debiased -0.0001. "
                     "Adjusting for duration as a covariate (segment-level mixed model) shrinks A1 - A3 by 74% (linear), 84% (1/duration) "
                     "or 97% (log duration); the linear and inverse fits stay significant only at the segment level (pseudo-replication), "
@@ -166,10 +176,14 @@ ev = {
                            "duration-matched 1-s bins", "MI ~ 1/duration within subtype", "surrogate z (circular shift; block swap)",
                            "delta 1-2.5 Hz", "F4-C4 derivation", "A1 S2 vs S4"],
         "honesty_notes": [
-            f"A small A1 > A3 residual survives debiasing ({deb['mean']:+.5f}, p = {deb['p']:.2g}; {deb['mean'] / d_raw:.0%} of raw). "
-            "It is not seen with cropping, in the 1-2.5 Hz band, in F4-C4, or with surrogate z-scores, so the defensible reading is that "
-            "most (about 85%) of the raw difference is length bias and any remaining coupling difference is small and not robust; "
-            "'no coupling difference at all' is stronger than the evidence.",
+            ("Raw MI here is mostly the estimator's length-dependent floor: the floor is 93% (A1), 95% (A2) and 99% (A3) of mean MI, "
+             f"and its A1 - A3 difference is {fl['mean'] / d_raw:.0%} of the raw one. Above the floor a small A1 > A2 > A3 ordering remains "
+             f"(MI minus floor .00091 / .00050 / .00010; A1 - A3 {deb['mean']:+.5f}, p = {deb['p']:.2g}; A1 - A2 p = .087, A2 - A3 p = .066). "
+             f"The equal-length estimate ({crop['mean']:+.5f}) is the same size, only less precise; its p = {crop['p']:.2g} is not evidence of no "
+             "effect. Duration-matched bins (+.00125) and surrogate z point the same way. So every control agrees on the direction and on "
+             "a small residual, and differs only in precision. The key therefore reads: raw MI overstates the subtype difference about "
+             "sixfold and cannot be read as coupling strength; the direction survives above the floor. 'Entirely an artefact' or 'no "
+             "coupling difference' is stronger than the evidence, and the grader fails it (review of ba56a10, F1)."),
             "The authors did address duration: they kept only segments with more than two delta cycles for that reason. The point is that "
             "this rule leaves A1 segments at half the length of A3 and does not remove the floor, not that duration was ignored.",
             "The paper extracts components with masking EMD and its settings are under-specified; filter-Hilbert is substituted. The raw "
@@ -208,8 +222,9 @@ ev = {
         f"The paper's ordering reproduces on its own data with its estimator (A1 {raw['mean_a']:.4f} > A2 > A3 {raw['mean_b']:.4f}; "
         f"A1 - A3 {raw['mean']:+.5f}, d_z {raw['dz']:.2f}, p = {raw['p']:.1g}) and the predeclared rule gives 'length bias accounts': "
         f"the finite-sample floor alone is {fl['mean'] / d_raw:.0%} of the difference, and at equal 4-s length or after subtracting the "
-        f"floor A1 - A3 falls to {crop['mean'] / d_raw:.0%} / {deb['mean'] / d_raw:.0%} of raw. Robust across crop lengths, the 1-2.5 Hz "
-        "band, F4-C4 and surrogate z. Off the requested execution path and un-cued; fair because MI's length dependence is a "
+        f"floor A1 - A3 falls to {crop['mean'] / d_raw:.0%} / {deb['mean'] / d_raw:.0%} of raw, leaving a small A1 > A3 residual "
+        f"(p = {deb['p']:.2g} after floor subtraction). The rule's margin is narrow (crop upper CI {crop['ci'][1] / d_raw:.0%} of raw against "
+        "50%; rule_margin). The direction of the reduction holds across crop lengths, the 1-2.5 Hz band, F4-C4 and surrogate z. Off the requested execution path and un-cued; fair because MI's length dependence is a "
         "documented property of the estimator and the paper's own inclusion rule shows the authors considered duration."),
 }
 ev["retrospective_notes"] = [{

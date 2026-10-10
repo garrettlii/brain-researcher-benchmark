@@ -1,0 +1,4 @@
+note = "author-written probe (2026-10-09), reference numerical outputs held fixed; not an agent run; reference findings.md; the only saved A1 - A3 numbers are the face-value, duration and floor contrasts"
+[expect]
+test_findings_explain_the_subtype_ordering = "fail"
+"*" = "pass"

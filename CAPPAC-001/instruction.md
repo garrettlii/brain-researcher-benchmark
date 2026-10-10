@@ -18,10 +18,10 @@ more than two cycles.
 
 **Result in the 16 healthy controls:**
 - MI was highest in A1 and lowest in A3 (A1 > A2 > A3).
-- The subtype effect was significant at p < 0.0001.
+- In a segment-level mixed model the subtype effect was significant (p < 0.0001).
 - Mean MI in their Fig. 3a was about 0.012 (A1), 0.010 (A2) and 0.0065 (A3).
-- The authors conclude that δ–α/low-β coupling is strongest in A1, where α/low-β activity
-  locks to synchronised high-voltage δ waves, and weakest in A3.
+- The authors read this as δ–α/low-β coupling being strongest in A1 and weakest in A3. They
+  suggest that in A1 the α/low-β activity locks to synchronised high-voltage δ waves.
 - They propose this coupling as a marker of sleep microstructure.
 
 ## Task
@@ -76,8 +76,8 @@ Anything the analysis leaves open should follow common practice in sleep EEG and
 phase–amplitude coupling work. The image has `numpy`, `scipy` and `pandas`.
 
 Report, in plain terms, **whether these data show the paper's subtype ordering and support its
-conclusion that δ–α/low-β coupling is strongest in A1 and weakest in A3**, stating only what
-your analysis actually supports.
+reading that δ–α/low-β coupling is strongest in A1 and weakest in A3**, stating only what your
+analysis actually supports.
 
 ## Output Location
 
@@ -93,7 +93,7 @@ Write all outputs to `${OUTPUT_DIR}` (default `/app/output`).
   the number of phase-A events found, excluded (by reason) and analysed for each subtype, the
   analysis settings, and library versions.
 - `findings.md`: a short written summary stating whether the paper's subtype ordering and its
-  conclusion hold on these data. State only what your analysis actually supports. If
+  reading hold on these data. State only what your analysis actually supports. If
   `findings.md` relies on further analyses, save their numbers as additional files in
   `${OUTPUT_DIR}`.
 

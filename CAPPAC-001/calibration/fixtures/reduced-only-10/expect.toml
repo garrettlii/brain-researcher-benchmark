@@ -1,0 +1,4 @@
+note = "author-written probe (2026-10-09), reference numerical outputs held fixed; not an agent run; reconstructed from a quote in the ba56a10 review's held-out probes (F2b: a small reduction read as collapse)"
+[expect]
+test_findings_explain_the_subtype_ordering = "fail"
+"*" = "pass"

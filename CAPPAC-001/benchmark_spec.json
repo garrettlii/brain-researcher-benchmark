@@ -6,7 +6,7 @@
   "public_instruction_ref": {
     "artifact_id": "CAPPAC-001:instruction.md",
     "uri": "instruction.md",
-    "sha256": "c90fc148a3a1ccfb4748ca8da08a65812a57da901696d0e0c973827308aaadfc",
+    "sha256": "de2d3f5a8430b279aafde84b3c416d659c73262cbbab6f913db5b7722fe32814",
     "media_type": "text/markdown",
     "visibility": "public"
   },
@@ -20,21 +20,21 @@
   "expected_output_schema_ref": {
     "artifact_id": "CAPPAC-001:instruction.md",
     "uri": "instruction.md",
-    "sha256": "c90fc148a3a1ccfb4748ca8da08a65812a57da901696d0e0c973827308aaadfc",
+    "sha256": "de2d3f5a8430b279aafde84b3c416d659c73262cbbab6f913db5b7722fe32814",
     "media_type": "text/markdown",
     "visibility": "public"
   },
   "oracle_ref": {
     "artifact_id": "CAPPAC-001:solution_compute.py",
     "uri": "solution/compute.py",
-    "sha256": "d3f2c346e4fa4b53a25c8ed2d7a949484cc1f15639af485084be2a37c12a70d4",
+    "sha256": "0aa225b3547db0bd91962a66213e2647a4b9e3c2e34a6881a6cca4cc4c00b06e",
     "media_type": "text/x-python",
     "visibility": "oracle_private"
   },
   "verifier_ref": {
     "artifact_id": "CAPPAC-001:tests_test_outputs.py",
     "uri": "tests/test_outputs.py",
-    "sha256": "c02ff4e6f8154ee786893510a686f148215c2b5df4c19723ff104b3b884ca9a0",
+    "sha256": "e1b80490da32c714a397d1140d1ac2eebe76af1ac69bb821d302bf28b5e9e324",
     "media_type": "text/x-python",
     "visibility": "oracle_private"
   },
@@ -42,7 +42,7 @@
     {
       "artifact_id": "CAPPAC-001:instruction.md",
       "uri": "instruction.md",
-      "sha256": "c90fc148a3a1ccfb4748ca8da08a65812a57da901696d0e0c973827308aaadfc",
+      "sha256": "de2d3f5a8430b279aafde84b3c416d659c73262cbbab6f913db5b7722fe32814",
       "media_type": "text/markdown",
       "visibility": "public"
     },
@@ -70,7 +70,7 @@
     {
       "artifact_id": "CAPPAC-001:solution_compute.py",
       "uri": "solution/compute.py",
-      "sha256": "d3f2c346e4fa4b53a25c8ed2d7a949484cc1f15639af485084be2a37c12a70d4",
+      "sha256": "0aa225b3547db0bd91962a66213e2647a4b9e3c2e34a6881a6cca4cc4c00b06e",
       "media_type": "text/x-python",
       "visibility": "oracle_private"
     },
@@ -84,21 +84,21 @@
     {
       "artifact_id": "CAPPAC-001:tests_test_outputs.py",
       "uri": "tests/test_outputs.py",
-      "sha256": "c02ff4e6f8154ee786893510a686f148215c2b5df4c19723ff104b3b884ca9a0",
+      "sha256": "e1b80490da32c714a397d1140d1ac2eebe76af1ac69bb821d302bf28b5e9e324",
       "media_type": "text/x-python",
       "visibility": "oracle_private"
     },
     {
       "artifact_id": "CAPPAC-001:proposal.md",
       "uri": "proposal.md",
-      "sha256": "35b531c803543438f659fea3d45df745ccb97c0df587fba7501d76dec26ce74c",
+      "sha256": "69fc751db99715d827cc8669a307025c6d763fa505e1f03d6b223e2382001042",
       "media_type": "text/markdown",
       "visibility": "author_private"
     },
     {
       "artifact_id": "CAPPAC-001:step0_evidence.json",
       "uri": "step0/evidence.json",
-      "sha256": "02b997ba8a7ffa0a85df76b2d576136dbb64764dc7b0b3f6475c62ed65fa78b4",
+      "sha256": "bd87d3141e2f308c47c86d4c63a09809f4f6d13f9bec553b425e6287966ab7e9",
       "media_type": "application/json",
       "visibility": "author_private"
     }
@@ -106,14 +106,14 @@
   "private_failure_axis_ref": {
     "artifact_id": "CAPPAC-001:step0_evidence.json",
     "uri": "step0/evidence.json",
-    "sha256": "02b997ba8a7ffa0a85df76b2d576136dbb64764dc7b0b3f6475c62ed65fa78b4",
+    "sha256": "bd87d3141e2f308c47c86d4c63a09809f4f6d13f9bec553b425e6287966ab7e9",
     "media_type": "application/json",
     "visibility": "author_private"
   },
   "private_hidden_lever_ref": {
     "artifact_id": "CAPPAC-001:step0_evidence.json",
     "uri": "step0/evidence.json",
-    "sha256": "02b997ba8a7ffa0a85df76b2d576136dbb64764dc7b0b3f6475c62ed65fa78b4",
+    "sha256": "bd87d3141e2f308c47c86d4c63a09809f4f6d13f9bec553b425e6287966ab7e9",
     "media_type": "application/json",
     "visibility": "author_private"
   },
@@ -128,7 +128,7 @@
   "step0_evidence_ref": {
     "artifact_id": "CAPPAC-001:step0_evidence.json",
     "uri": "step0/evidence.json",
-    "sha256": "02b997ba8a7ffa0a85df76b2d576136dbb64764dc7b0b3f6475c62ed65fa78b4",
+    "sha256": "bd87d3141e2f308c47c86d4c63a09809f4f6d13f9bec553b425e6287966ab7e9",
     "media_type": "application/json",
     "visibility": "author_private"
   },

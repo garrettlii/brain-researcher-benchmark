@@ -8,24 +8,30 @@ Hilbert transform; every MCAP-A1/A2/A3 event outside movement time and inside th
 kept if the delta phase advances more than two cycles; Tort MI with 20 bins per segment;
 subject means per subtype; paired t-tests across subjects.
 
-What the reference also asks: is the MI ordering a difference in coupling, or in how much
-data each segment has? The MI of a finite segment is positive even with no coupling, and the
-floor shrinks roughly with 1/length (Tort et al. 2010). The authors knew phase-A durations
-differ and kept only segments with more than two delta cycles partly for that reason; the
-reference checks whether that rule is enough. A1 segments stay about half as long as A3, so
-it compares lengths, estimates each segment's no-coupling floor from 50 circular shifts of
-the amplitude series inside the segment, and recomputes MI on the first 4 s of every
+What the reference also asks: how much of the MI ordering is coupling, and how much is the
+amount of data in each segment? The MI of a finite segment is positive even with no coupling,
+and the floor shrinks roughly with 1/length (Tort et al. 2010). The authors knew phase-A
+durations differ and kept only segments with more than two delta cycles partly for that
+reason; the reference checks whether that rule is enough. A1 segments stay about half as long
+as A3, so it compares lengths, estimates each segment's no-coupling floor from 50 circular
+shifts of the amplitude series inside the segment, and recomputes MI on the first 4 s of every
 segment >= 4 s.
 
 Validated numbers (Step 0, step0/evidence.json; n = 16 subjects, 3923 / 1314 / 1145 segments):
   RAW      subject-mean MI A1 .01222, A2 .00956, A3 .00719; A1 - A3 +0.00503
            [+0.00398, +0.00609], d_z 2.54, t15 = 10.16, p = 4e-8              (paper: A1 > A2 > A3)
-  PREMISE  duration A1 6.0 s vs A3 13.2 s (t15 = -14.75); no-coupling floor A1 - A3
-           +0.00422 [+0.00328, +0.00517], 84% of the raw difference
-  CTRL     first 4 s:       A1 - A3 +0.00088 [-0.00068, +0.00243], p = .25   (17% of raw)
-           MI minus floor:  A1 - A3 +0.00081 [+0.00022, +0.00139], p = .0099 (16% of raw)
-           -> segment length accounts for most of the ordering; at most a small subtype
-              difference remains
+  PREMISE  duration A1 6.0 s vs A3 13.2 s (t15 = -14.75); the no-coupling floor is 93% (A1),
+           95% (A2) and 99% (A3) of mean MI, and its A1 - A3 difference is +0.00422
+           [+0.00328, +0.00517], 84% of the raw difference
+  CTRL     MI minus floor:  A1 .00091 > A2 .00050 > A3 .00010; A1 - A3 +0.00081
+                            [+0.00022, +0.00139], p = .0099 (16% of raw); A1 - A2 p = .087,
+                            A2 - A3 p = .066
+           first 4 s:       A1 - A3 +0.00088 [-0.00068, +0.00243], p = .25 (17% of raw; the
+                            same size, less precise)
+           -> raw MI is mostly the length-dependent floor and overstates the subtype difference
+              about sixfold; above the floor a small A1 > A2 > A3 ordering remains
+              (significant only for A1 - A3). The predeclared rule's margin is narrow: the
+              first-4-s upper CI is 48% of raw against a 50% bound (step0/evidence.json).
 
     OUTPUT_DIR=/app/output CAPSLPDB_DIR=/app/data/capslpdb python3 compute.py
 """
@@ -213,7 +219,16 @@ def volunteered_check(seg):
         sl = [stats.linregress(1 / d.dur_s, d.mi).slope for _, d in seg[seg.subtype == st].groupby("subject")
               if len(d) >= MIN_SEG]
         slopes[st] = paired(sl)
-    return {"duration_s": {f"{a}-{b}": contrast(seg, "dur_s", a, b) for a, b in PAIRS},
+    sm = seg.groupby(["subject", "subtype"])[["mi", "floor", "mi_minus_floor"]].mean()
+    n = seg.groupby(["subject", "subtype"]).size()
+    sm = sm[n >= MIN_SEG]
+    by = {st: {"mean_mi": float(sm.xs(st, level="subtype")["mi"].mean()),
+               "mean_floor": float(sm.xs(st, level="subtype")["floor"].mean()),
+               "mean_mi_minus_floor": float(sm.xs(st, level="subtype")["mi_minus_floor"].mean())} for st in SUBTYPES}
+    for v in by.values():
+        v["floor_share_of_mi"] = v["mean_floor"] / v["mean_mi"]
+    return {"by_subtype": by,
+            "duration_s": {f"{a}-{b}": contrast(seg, "dur_s", a, b) for a, b in PAIRS},
             "no_coupling_floor": {f"{a}-{b}": contrast(seg, "floor", a, b) for a, b in PAIRS},
             "mi_first_4s": {f"{a}-{b}": contrast(seg, "mi_first4s", a, b) for a, b in PAIRS},
             "mi_minus_floor": {f"{a}-{b}": contrast(seg, "mi_minus_floor", a, b) for a, b in PAIRS},
@@ -228,10 +243,12 @@ def volunteered_check(seg):
 def write_findings(prim, chk):
     c, d, f = prim["A1-A3"], chk["duration_s"]["A1-A3"], chk["no_coupling_floor"]["A1-A3"]
     k, b = chk["mi_first_4s"]["A1-A3"], chk["mi_minus_floor"]["A1-A3"]
-    mm, n = prim["mean_mi"], prim["n_subjects"]
+    b12, b23 = chk["mi_minus_floor"]["A1-A2"], chk["mi_minus_floor"]["A2-A3"]
+    mm, n, by = prim["mean_mi"], prim["n_subjects"], chk["by_subtype"]
     raw = c["difference"]
     ci = lambda r: f"[{r['ci_low']:+.5f}, {r['ci_high']:+.5f}]"  # noqa: E731
     sl = chk["slope_mi_vs_inverse_duration"]
+    share = ", ".join(f"{by[st]['floor_share_of_mi']:.0%}" for st in SUBTYPES)
     (OUT / "findings.md").write_text(f"""# CAPPAC-001: delta-alpha/low-beta coupling across CAP phase-A subtypes
 
 ## The result at face value
@@ -241,27 +258,32 @@ A2 {mm['A2']:.4f} and A3 {mm['A3']:.4f}, close to the paper's Fig. 3a. A1 - A3 =
 (paired t{n - 1} = {c['t']:.2f}, p = {c['p']:.1g}, d_z = {c['cohens_dz']:.2f}); A1 - A2 and A2 - A3 are also positive
 (p = {prim['A1-A2']['p']:.2g} and {prim['A2-A3']['p']:.2g}). The ordering A1 > A2 > A3 reproduces.
 
-## Is the MI difference a coupling difference?
+## How much of the MI is coupling?
 Tort's MI is positive even without coupling, and that floor is larger for shorter segments. The
 authors knew phase-A durations differ and analysed only segments with more than two delta cycles,
 partly to limit this. After that rule the subtypes still differ two-fold in length: A1 segments last
 {d['mean_A1']:.1f} s on average and A3 segments {d['mean_A3']:.1f} s (paired difference {d['difference']:+.1f} s, shorter in every subject).
 Within every subtype, MI rises with 1/duration (slopes {sl['A1']['difference']:+.3f}, {sl['A2']['difference']:+.3f}, {sl['A3']['difference']:+.3f}; all p < .001).
 
-- No-coupling floor (MI after circularly shifting the amplitude inside each segment, 50 shifts):
-  A1 - A3 = {f['difference']:+.5f} {ci(f)}, i.e. {f['difference'] / raw:.0%} of the raw difference.
+- No-coupling floor (MI after circularly shifting the amplitude inside each segment, 50 shifts): A1
+  {by['A1']['mean_floor']:.4f}, A2 {by['A2']['mean_floor']:.4f}, A3 {by['A3']['mean_floor']:.4f}, i.e. {share} of the mean MI. Its A1 - A3
+  difference is {f['difference']:+.5f} {ci(f)}, {f['difference'] / raw:.0%} of the raw difference.
+- MI minus each segment's floor: A1 {by['A1']['mean_mi_minus_floor']:.5f}, A2 {by['A2']['mean_mi_minus_floor']:.5f}, A3 {by['A3']['mean_mi_minus_floor']:.5f}.
+  A1 - A3 = {b['difference']:+.5f} {ci(b)}, p = {b['p']:.2g}, {b['difference'] / raw:.0%} of the raw difference;
+  A1 - A2 (p = {b12['p']:.2g}) and A2 - A3 (p = {b23['p']:.2g}) are not significant.
 - MI on the first 4 s of every segment (the same length for every subtype): A1 - A3 = {k['difference']:+.5f}
-  {ci(k)}, p = {k['p']:.2g}, {k['difference'] / raw:.0%} of the raw difference; at equal length the subtype difference is not significant.
-- MI minus each segment's floor: A1 - A3 = {b['difference']:+.5f} {ci(b)}, p = {b['p']:.2g}, {b['difference'] / raw:.0%} of the raw
-  difference. A small residual remains here.
+  {ci(k)}, p = {k['p']:.2g}, {k['difference'] / raw:.0%} of the raw difference. This is about the same size as the
+  floor-subtracted difference, estimated less precisely.
 
 ## Conclusion
-The paper's numbers reproduce, but most of the A1 > A3 difference in MI (about {1 - max(k['difference'], b['difference']) / raw:.0%}) is explained
-by segment length rather than by stronger delta-alpha/low-beta coupling in A1: the two-cycle rule does
-not make the subtypes comparable. Once length is equalised or the length-specific floor is subtracted,
-at most a small subtype difference remains (significant after floor subtraction, not at equal length).
-These data do not support the paper's reading of the MI ordering as a substantial difference in
-coupling strength between subtypes.
+The paper's MI values and their ordering reproduce, but raw MI here is mostly the estimator's
+length-dependent floor: the two-cycle rule leaves A1 segments half as long as A3 segments, and the
+floor alone gives {f['difference'] / raw:.0%} of the A1 - A3 difference. Above the floor a small A1 > A2 > A3 ordering
+remains, about {b['difference'] / raw:.0%} of the raw difference (significant only for A1 - A3 after floor subtraction;
+the equal-length estimate is the same size but imprecise). Raw MI therefore overstates the subtype
+difference about {raw / b['difference']:.0f}-fold and cannot be read as coupling strength. These data are consistent with
+slightly stronger coupling in A1 than in A3, but not with the paper's reading of the MI differences
+as a substantial difference in coupling strength between subtypes.
 """, encoding="utf-8")
 
 

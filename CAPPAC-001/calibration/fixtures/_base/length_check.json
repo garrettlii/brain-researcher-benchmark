@@ -1,4 +1,24 @@
 {
+  "by_subtype": {
+    "A1": {
+      "mean_mi": 0.012222211296617241,
+      "mean_floor": 0.011314190184603704,
+      "mean_mi_minus_floor": 0.0009080211120135377,
+      "floor_share_of_mi": 0.9257072971513058
+    },
+    "A2": {
+      "mean_mi": 0.009561994192362387,
+      "mean_floor": 0.00906555504165138,
+      "mean_mi_minus_floor": 0.0004964391507110076,
+      "floor_share_of_mi": 0.9480820485011864
+    },
+    "A3": {
+      "mean_mi": 0.007191760196187481,
+      "mean_floor": 0.007091032936359909,
+      "mean_mi_minus_floor": 0.00010072725982757257,
+      "floor_share_of_mi": 0.9859940741793685
+    }
+  },
   "duration_s": {
     "A1-A3": {
       "n_subjects": 16,

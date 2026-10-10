@@ -9,7 +9,7 @@
 - **The lever's methods literature:** the finite-sample dependence of Tort's MI on data length (Tort et al. 2010, *J Neurophysiol* 104:1195).
 - **Dataset:** PhysioNet CAP Sleep Database 1.0.0, the paper's own data. Healthy recordings n1–n16, staged and sha256-checked at build.
 
-**Status:** v1 + oracle (local), revised after the review of ba56a10 (F1–F5). Docker/Harbor and agent calibration have not run.
+**Status:** v1 + oracle (local), revised after the review of ba56a10 (F1–F5); accepted as construction-ready within tested scope (review of a450add). Docker/Harbor and agent calibration have not run.
 
 ### Why this exists
 
@@ -335,11 +335,45 @@ interpretation requires. These answers fail:
 A bare ATTR answer ("driven by shorter segments") also needs a control in that sentence or the
 one before. So an asserted but untested attribution fails (`asserted-untested`).
 
-**Known residual risks:**
-- The guard is lexical. An answer can state a rebuttal in a form it does not list and still pass,
-  if it also contains a linked control sentence.
-- An honest answer that reports its control numbers only in prose, and saves nothing, fails the
-  backstop. The instruction asks for the numbers to be saved.
+**Review outcome (a450add).** The reviewer accepted v1 as construction-ready within the tested
+scope and closed further grader rounds.
+- **Verified:** the F1 key, F3 for dict layouts, the F4 margin and the F5 framing.
+- **Checks:** check_task gives 0 errors; check_verifier gives 61 fixtures with 0 mismatches. The
+  reviewer's oracle rerun was identical to ours.
+- **Held-out probes:** round 1 scored 15/16 correct; on round 2, 4 of 6 fresh adversarial texts
+  were blocked, against 0 of 7 in v0.
+- **Rationale for stopping:** the prose regex is about 200 lines and still leaks on fresh probes.
+  The key, the premise and the Stage-2 difficulty all hold, and later reviews gate on those.
+
+**Known grader limitations** (recorded at the reviewer's request and left unfixed by decision;
+read every Stage-5 agent run by hand against these):
+1. **The contradiction guard's exemptions are too broad.** Two things switch off the verdict and
+   qualifier rebuttals: face-value framing (`\braw\b` anywhere in the sentence), or
+   reported-claim words (paper / authors / they / their) anywhere earlier in the clause.
+   - False pass: "…the paper's reading holds beyond the raw numbers: A1 carries the strongest
+     coupling".
+   - False pass: round-1 probe H-A1.
+2. **Endorsements with more than one word between subject and verdict are missed.** False pass:
+   "Their reading that coupling is strongest in A1 is nonetheless correct."
+3. **Some correct explanations are missed** (false negatives):
+   - a collapse worded as a fraction: "shrinks the gap to about a sixth";
+   - an attribution worded as a shuffle with numbers: "Shuffling the amplitude within each
+     segment reproduces almost all of the subtype gap (0.0042 of 0.0050)".
+4. **The backstop does not recognise suffixed contrast keys.** A solution that saves only
+   `{"A1_vs_A3_first4s": {...}}` fails (false negative).
+5. **`_contrast` and list layouts.** For a list of records with the control record first,
+   `_contrast` reads the control (0.00087), so the compute check fails correct science (false
+   negative). Dict layouts are handled.
+6. **Minor: three adversarial texts fail for lack of a link,** not because the guard catches them:
+   "rule out segment length"; "A2–A3 vanishes … A1 stays well above"; "valid biomarker as Yeh &
+   Shi propose". The right outcome comes from the wrong reason.
+7. **The guard is lexical,** so any rebuttal form it does not list can pass alongside a linked
+   control sentence.
+8. **The backstop needs saved numbers.** An honest answer that reports its control numbers only in
+   prose, and saves nothing, fails it. The instruction asks for the numbers to be saved.
+
+Items 4 and 5 are format false negatives on correct science. If a Stage-5 run hits them, score
+the run by hand. Do not count it as a model failure.
 
 ### Difficulty (predicted; not yet measured)
 
@@ -370,7 +404,7 @@ correct ones failed. v1 fixes these by class (F2a–e, F3) rather than by phrase
 saved-computation backstop. Each class has fixtures in both directions. The reviewer will re-probe
 with a fresh held-out set.
 
-**Disposition:** hard candidate (draft). Uncalibrated.
+**Disposition:** hard candidate (draft), construction-ready per the review of a450add. Uncalibrated.
 
 ### Cost
 
